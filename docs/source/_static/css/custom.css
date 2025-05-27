@@ -1,0 +1,226 @@
+/* ====================
+   VARIABLES PERSONALIZADAS
+   ==================== */
+:root {
+    /* Colores base para enlaces */
+    --link-color: #000e66;
+    --link-hover-color: #0b4d8c;
+
+    /* Estilos para fondo y texto de código */
+    --code-background: #f4f4f4;
+    --code-text: #0b1017;
+
+    /* Estilos para el fondo y borde de bloques informativos */
+    --admonition-background: #eef2f6;
+    --admonition-border: #aec5d3;
+
+    /* Color de borde para tablas */
+    --table-border-color: rgba(58, 70, 87, 0.4);
+}
+
+/* Ajustes para modo oscuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --link-color: #012a65;
+        --link-hover-color: #0b4d8c;
+
+        --code-background: rgb(255, 255, 255);
+        --code-text: rgb(0, 30, 54);
+
+        --admonition-background: #1c2a3a;
+        --admonition-border: #0b1017;
+
+        --table-border-color: #3a3f44;
+    }
+}
+
+/* ====================
+   ENLACES
+   ==================== */
+article a {
+    color: var(--link-color);
+    /* Color del texto del enlace */
+    font-weight: bold;               /* Texto en negrita */
+    text-decoration: none;           /* Sin subrayado */
+}
+
+article a:hover {
+    color: var(--link-hover-color);  /* Cambio de color al pasar el cursor */
+    text-decoration: underline;      /* Subrayado al pasar el cursor */
+}
+
+/* ====================
+   TÍTULOS
+   ==================== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;               /* Todos los encabezados en negrita */
+}
+
+/* ====================
+   CÓDIGO
+   ==================== */
+code, pre {
+    background-color: var(--code-background); /* Fondo del bloque de código */
+    color: var(--code-text);                  /* Color del texto del código */
+    font-family: 'Fira Code', Consolas, monospace; /* Fuente monoespaciada */
+    font-size: 0.95em;                        /* Tamaño de fuente reducido */
+    border-radius: 4px;                       /* Bordes redondeados */
+    padding: 0.25em 0.5em;                    /* Espaciado interno */
+}
+
+pre {
+    overflow-x: auto;     /* Permitir desplazamiento horizontal */
+    padding: 1em;         /* Más espacio interno */
+}
+
+/* ====================
+   TABLAS
+   ==================== */
+article th, article td {
+    padding: 0.5em;                         /* Espaciado en celdas */
+    border: 1px solid var(--table-border-color); /* Borde de celda */
+}
+
+/* ====================
+   ADMONICIONES POR TIPO
+   ==================== */
+
+/* NOTA */
+.admonition.note {
+    border-left-color: #7ca3d6;
+    background-color: #eef2f6;
+}
+@media (prefers-color-scheme: dark) {
+    .admonition.note {
+        border-left-color: #5b8ec8;
+        background-color: #19283e;
+    }
+}
+
+/* ADVERTENCIA */
+.admonition.warning {
+    border-left-color: rgba(102, 0, 12, 0.78);
+    background-color: #817137;
+}
+@media (prefers-color-scheme: dark) {
+    .admonition.warning {
+        border-left-color: rgba(102, 0, 12, 0.78);
+        background-color: #3a2e00;
+    }
+}
+
+/* CONSEJO */
+.admonition.tip {
+    border-left-color: #092e22;
+    background-color: #e6f4f1;
+}
+@media (prefers-color-scheme: dark) {
+    .admonition.tip {
+        border-left-color: #00e384;
+        background-color: #0b231d;
+    }
+}
+
+/* IMPORTANTE */
+.admonition.important {
+    border-left-color: #5f0066;
+    background-color: #0b1017;
+}
+@media (prefers-color-scheme: dark) {
+    .admonition.important {
+        border-left-color: #5f0066;
+        background-color: rgba(11, 16, 23, 0.07);
+    }
+}
+
+/* ====================
+   ADMONICIONES GENERALES
+   ==================== */
+.admonition {
+    background-color: var(--admonition-background); /* Fondo base */
+    border-left: 4px solid var(--admonition-border); /* Borde lateral */
+    padding: 1em;                          /* Espaciado interno */
+    border-radius: 4px;                   /* Bordes redondeados */
+    color: inherit;                       /* Hereda el color del texto */
+}
+
+/* ====================
+   TARJETAS EN GRID
+   ==================== */
+.card-grid {
+    display: grid;                                  /* Diseño en cuadrícula */
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Columnas adaptables */
+    gap: 20px;                                      /* Separación entre tarjetas */
+    padding: 20px;
+    justify-items: center;                          /* Centrado horizontal */
+}
+
+.card-grid a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card {
+    width: 110px;
+    height: 110px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgb(11, 16, 23);          /* Sombra sutil */
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transiciones suaves */
+}
+
+.card:hover {
+    transform: translateY(-5px);                    /* Elevación al pasar el cursor */
+    box-shadow: 0 8px 16px rgb(0, 0, 0);          /* Sombra más fuerte */
+    cursor: pointer;
+}
+
+.card img {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.card span {
+    font-size: 14px;
+    color: #333;
+}
+
+/* ====================
+   ACORDEÓN PARA DOCUMENTACIÓN
+   ==================== */
+.accordion details {
+    border: 1px solid rgb(11, 16, 23); /* Borde del contenedor */
+    border-radius: 6px;
+    margin-bottom: 10px;
+    padding: 12px;
+}
+
+.accordion summary {
+    font-size: 1.1em;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+
+.accordion ul {
+    list-style: disc;
+    margin: 10px 0 0 20px;
+    padding-left: 0;
+}
+
+.accordion li a {
+    text-decoration: none;
+    color: #ccc;
+}
+
+.accordion li a:hover {
+    text-decoration: underline;
+    color: #fff;
+}

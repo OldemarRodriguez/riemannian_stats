@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "riemannian_stats"
+version = "0.1.0"
+description = "Riemannian STATS is a package for applying Principal Component Analysis on Riemannian manifolds using UMAP-derived local geometry, enabling powerful dimensionality reduction and visualization for any type of data."
+authors = [
+    { name = "Oldemar Rodríguez Rojas", email = "oldemar.rodriguez@ucr.ac.cr" },
+    { name = "Jennifer Lobo Vásquez", email = "jennifer.lobo.vasquez@est.una.ac.cr" }
+]
+license = {text = "BSD-3-Clause"}
+readme = "README.md"
+requires-python = ">=3.8"
+
+dependencies = [
+    "matplotlib>=3.9.2,<3.11",
+    "pandas>=2.2.2,<2.3",
+    "numpy>=1.26.4,<2.0",
+    "scikit-learn>=1.5.1,<1.7",
+    "umap-learn>=0.5.7,<0.6",
+]
+
+[project.optional-dependencies]
+plot = [
+    "matplotlib>=3.9.2,<3.11",
+    "pandas>=2.2.2,<2.3"
+]
+
+[project.urls]
+Homepage = "https://github.com/tuusuario/riemannian_stats_py"
+Repository = "https://github.com/JenniLoboV/riemann_stats_py.git"
