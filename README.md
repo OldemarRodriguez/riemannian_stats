@@ -5,6 +5,8 @@
 
 ---
 
+![](/docs/html/_images/logo.jpg)
+
 ### 📊 **Riemannian STATS: Statistical Analysis on Riemannian Manifolds**
 
 **RiemannianStats** is an open-source package that implements a novel principal component analysis methodology adapted for data on Riemannian manifolds, using UMAP as a core tool to construct the underlying geometric structure. This tool enables advanced statistical techniques to be applied to any type of dataset, honoring its local geometry, without requiring the data to originate from traditionally geometric domains like medical imaging or shape analysis.
