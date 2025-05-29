@@ -1,3 +1,13 @@
+/* Ocultar el botón de cambio de tema */
+.theme-toggle {
+    display: none !important;
+}
+
+/* Ocultar el enlace de "Ver código" */
+a.muted-link {
+    display: none !important;
+}
+
 
 /*Tipografía general*/
 body {

@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Riemannian STATS is a package for applying Principal Component Analysis on Riemannian manifolds using UMAP-derived local geometry, enabling powerful dimensionality reduction and visualization for any type of data."
 authors = [
     { name = "Oldemar Rodríguez Rojas", email = "oldemar.rodriguez@ucr.ac.cr" },
-    { name = "Jennifer Lobo Vásquez", email = "jennifer.lobo.vasquez@est.una.ac.cr" }
+    { name = "Jennifer Lobo Vásquez", email = "jennifer.lobo.vasquez@gmail.com" }
 ]
 license = {text = "BSD-3-Clause"}
 readme = "README.md"
