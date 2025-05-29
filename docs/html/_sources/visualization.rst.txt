@@ -1,5 +1,5 @@
-Module Details
-==============
+Visualization Module Details
+============================
 
 The ``Visualization`` class provides a collection of plotting tools tailored to dimensionality reduction results such as PCA or UMAP. It helps reveal data structures, clusters, and relationships between variables through intuitive 2D and 3D visualizations.
 

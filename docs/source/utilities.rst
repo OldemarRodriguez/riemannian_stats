@@ -1,5 +1,5 @@
-Module Details
-==============
+Utilities Module Details
+========================
 
 The ``Utilities`` module offers standalone helper functions for common analytical tasks, particularly useful in dimensionality reduction workflows such as PCA. It is designed for convenience—methods can be used directly without instantiating a class, making it ideal for fast integration into data pipelines.
 

@@ -1,5 +1,5 @@
-Riemannian STATS Package
-========================
+Riemannian STATS Modules
+=========================
 
 The **Riemannian STATS** package is a comprehensive collection of tools designed for data analysis and dimensionality reduction, specifically focusing on techniques like UMAP and PCA, along with methods for visualizing and processing high-dimensional data. It includes several modules that provide easy-to-use functionalities for tackling common tasks in data science and statistical analysis.
 

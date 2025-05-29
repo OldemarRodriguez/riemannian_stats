@@ -37,9 +37,9 @@ This package is ideal for researchers, data scientists, and developers seeking t
        </a>
        <a href="riemannian_stats.html" class="card">
            <img src="_static/icons/package.png" alt="Riemannian STATS">
-           <span>Riemannian STATS Package</span>
+           <span>Riemannian STATS Modules</span>
        </a>
-    <a href="github_repository.html" class="card">
+    <a href="contributing.html" class="card">
            <img src="_static/icons/github.png" alt="Source Code and Contributors">
            <span>Source Code and Contributors</span>
        </a>
@@ -57,6 +57,6 @@ This package is ideal for researchers, data scientists, and developers seeking t
 
       How to Use Riemannian STATS       <examples>
       Install Riemannian STATS           <installation>
-      RiemannianStats Package           <riemannian_stats>
-      Source Code and Contributors      <github_repository>
+      RiemannianStats Modules           <riemannian_stats>
+      Source Code and Contributors      <contributing>
       Scientific Paper                  <paper>

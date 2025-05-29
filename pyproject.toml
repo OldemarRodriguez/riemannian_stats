@@ -29,5 +29,5 @@ plot = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/tuusuario/riemannian_stats_py"
-Repository = "https://github.com/JenniLoboV/riemann_stats_py.git"
+Homepage = "https://github.com/OldemarRodriguez/riemannian_stats"
+Repository = "https://github.com/OldemarRodriguez/riemannian_stats.git"

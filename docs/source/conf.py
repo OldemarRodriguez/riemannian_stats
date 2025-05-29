@@ -61,4 +61,6 @@ napoleon_numpy_docstring = True
 # -- Extension --
 
 todo_include_todos = True
-source_suffix = '.rst'
+source_suffix = {
+    '.rst': 'restructuredtext',
+}

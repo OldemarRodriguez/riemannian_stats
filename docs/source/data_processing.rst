@@ -1,5 +1,5 @@
-Module Details
-===============
+DataProcessing Module Details
+=============================
 
 The ``DataProcessing`` module simplifies the task of loading tabular data from CSV files into pandas DataFrames. It is particularly useful for quickly preparing datasets with different delimiters and decimal formats for analysis workflows.
 

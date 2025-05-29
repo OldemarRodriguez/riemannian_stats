@@ -5,7 +5,7 @@
 
 ---
 
-Thank you for your interest in contributing to the **riemann_stats_py** project! Contributions of all types are welcome—code improvements, bug reports, documentation enhancements, and feature suggestions.
+Thank you for your interest in contributing to the **Riemannian STATS** project! Contributions of all types are welcome—code improvements, bug reports, documentation enhancements, and feature suggestions.
 
 ## How to Contribute
 
@@ -13,11 +13,11 @@ Thank you for your interest in contributing to the **riemann_stats_py** project!
 
 Reporting issues or bugs is one of the simplest ways to help improve the project.
 
-- Check the [existing issues](https://github.com/yourusername/riemann_stats_py/issues) first to avoid duplication.
+- Check the [existing issues](https://github.com/OldemarRodriguez/riemannian_stats/issues) first to avoid duplication.
 - Clearly describe the issue and steps to reproduce it, if possible.
 - Include relevant details like Python version, operating system, and error messages.
 
-You can open a new issue [here](https://github.com/yourusername/riemann_stats_py/issues/new).
+You can open a new issue [here](https://github.com/OldemarRodriguez/riemannian_stats/issues/new).
 
 ### Contributing Documentation
 
@@ -26,7 +26,7 @@ Good documentation is vital. Improvements to clarity, completeness, or readabili
 To contribute documentation:
 
 1. Fork the repository.
-2. Make your changes to documentation files (typically located in the `/docs` folder or docstrings within the code).
+2. Make your changes to documentation files (located in the `/docs`).
 3. Submit a pull request (PR) clearly explaining your documentation improvements.
 
 #### Building Documentation Locally
@@ -35,10 +35,10 @@ To build documentation locally:
 
 ```shell
 pip install -r docs_requirements.txt
-sphinx-build -b html docs docs/_build
+sphinx-build -b html docs/ docs/html/
 ```
 
-You can view the built documentation by opening `docs/_build/index.html` in a browser.
+You can view the built documentation by opening `docs/html/index.html` in a browser.
 
 ### Contributing Code
 
@@ -50,7 +50,7 @@ Follow these steps:
 2. **Clone** the repository locally:
 
 ```shell
-git clone https://github.com/yourusername/riemann_stats_py.git
+git clone https://github.com/OldemarRodriguez/riemannian_stats.git
 ```
 
 3. **Create** a new branch for your changes:
@@ -62,7 +62,7 @@ git checkout -b feature/my-new-feature
 4. Make your changes and commit them clearly.
 
 ```shell
-git commit -am "Add my new feature"
+git commit -am "Add my-new-feature"
 ```
 
 5. **Push** your changes back to GitHub:

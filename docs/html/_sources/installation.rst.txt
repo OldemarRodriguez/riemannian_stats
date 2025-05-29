@@ -32,7 +32,7 @@ To install the latest development version directly from the GitHub repository:
 
 .. code-block:: bash
 
-   pip install git+https://github.com/your_username/riemannian_stats.git
+   pip install git+https://github.com/OldemarRodriguez/riemannian_stats.git
 
 This method does not require cloning the repository manually.
 
@@ -45,7 +45,7 @@ If you prefer to clone the repository and install the package from local files:
 
    .. code-block:: bash
 
-      git clone https://github.com/your_username/riemannian_stats.git
+      git clone https://github.com/OldemarRodriguez/riemannian_stats.git
 
 2. Navigate to the project directory:
 
@@ -101,4 +101,4 @@ Python Version
 
    python --version
 
-For more detailed installation instructions or to contribute to the project, visit the `GitHub repository <https://github.com/your_username/riemannian_stats_py>`_.
+For more detailed installation instructions or to contribute to the project, visit the `GitHub repository <https://github.com/OldemarRodriguez/riemannian_stats.git>`_.

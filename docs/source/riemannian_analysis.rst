@@ -1,5 +1,5 @@
-Module Details
-===============
+RiemannianAnalysis Module Details
+=================================
 
 The ``RiemannianAnalysis`` class combines the power of Uniform Manifold Approximation and Projection (UMAP) with Riemannian geometry, enabling a more insightful exploration of high-dimensional data.
 
