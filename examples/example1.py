@@ -1,6 +1,6 @@
 """
 This script demonstrates a comprehensive workflow for analyzing a high-dimensional dataset (Data10D_250.csv)
-using the riemannian_stats package. Initially, the dataset is loaded and preprocessed using data_processing.load_data(),
+using the riemannian_stats package. Initially, the dataset is loaded and preprocessed using pd.read_csv,
 with a comma as the separator and a dot as the decimal marker. The script verifies the presence of a 'cluster' column
 to extract clustering information and separates it from the data used for analysis, preserving a copy of the original
 dataset for visualization purposes.
@@ -25,18 +25,14 @@ This example illustrates how riemannian_stats enables a thorough analysis of com
 effectively extracting and visually representing its key features in Riemannian spaces.
 """
 
-from riemannian_stats import riemannian_analysis, visualization, data_processing, utilities
+from riemannian_stats import riemannian_analysis, visualization, utilities
+import pandas as pd
 
 # ---------------------------
 # Example 3: Data10D_250 Dataset
 # ---------------------------
-# Load the Data10D_250.csv dataset using data_processing.load_data, specifying the separator and decimal format.
-data = data_processing.load_data("./data/Data10D_250.csv", separator=",", decimal=".")
-
-# TODO: CAMBIAR data_processing POR pandas
-# Para importar el archivo tanbien puedes usar la libreria de pandas de la siguiente forma:
-# import pandas as pd
-# df = pd.read_csv("./data/Data10D_250.csv", sep=",", decimal="." )
+# Load the Data10D_250.csv dataset using pd.read_csv, specifying the separator and decimal format.
+data = pd.read_csv("./data/Data10D_250.csv", sep=",", decimal=".")
 
 # Define the number of neighbors as the length of the data divided by the number of clusters (in this example, 5).
 n_neighbors = int(len(data) / 5)

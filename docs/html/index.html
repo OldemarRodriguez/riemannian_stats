@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/base.css?v=cdbd32de" />
+    <link rel="stylesheet" type="text/css" href="_static/css/base.css?v=c7ecea0c" />
     <link rel="stylesheet" type="text/css" href="_static/css/light.css?v=63f92758" />
     <link rel="stylesheet" type="text/css" href="_static/css/dark.css?v=04b6e365" />
     
@@ -181,7 +181,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -247,7 +247,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -258,17 +258,20 @@
 <section id="riemannian-stats">
 <h1>Riemannian STATS<a class="headerlink" href="#riemannian-stats" title="Link to this heading">¶</a></h1>
 <p><strong>Riemannian STATS: Statistical Analysis on Riemannian Manifolds</strong></p>
-<p><strong>Riemannian STATS</strong> is an open-source package that implements a novel principal component analysis methodology adapted for data on Riemannian manifolds, using UMAP as a core tool to construct the underlying geometric structure. This tool enables advanced statistical techniques to be applied to any type of dataset, honoring its local geometry, without requiring the data to originate from traditionally geometric domains like medical imaging or shape analysis.</p>
-<p>Instead of assuming data resides in Euclidean space, RiemannianStats transforms any data table into a Riemannian manifold by leveraging the local connectivity extracted from a UMAP-generated k-nearest neighbor graph. On top of this structure, the package computes Riemannian principal components, covariance and correlation matrices, and even provides 2D and 3D visualizations that faithfully capture the dataset’s topology.</p>
-<p>With <strong>Riemannian STATS</strong>, you can:</p>
+<p><strong>Riemannian STATS</strong> is a Python package designed to extend classical multivariate statistical methods to data that lie on non-Euclidean spaces. This package introduces a general framework for <strong>Riemannian Principal Component Analysis (R-PCA)</strong>, a method developed to operate on datasets modeled as <strong>Riemannian manifolds</strong>. The foundational ideas are presented in the scientific paper <cite>“Riemannian Principal Component Analysis”</cite> by Oldemar Rodríguez.</p>
+<p>Unlike traditional PCA, which assumes a flat Euclidean geometry, R-PCA uses <strong>UMAP</strong> to define local distances and induce a Riemannian structure from any data table—structured or unstructured, real or synthetic. This enables geometric-aware dimensionality reduction and correlation analysis, even on datasets with complex topologies, non-linear relationships, or varying local densities.</p>
+<p>Built on these principles, <strong>Riemannian STATS</strong> enables:</p>
 <ul class="simple">
-<li><p>Incorporate the local geometry of your data for meaningful dimensionality reduction.</p></li>
-<li><p>Generate visual representations that better reflect the true structure of your data.</p></li>
-<li><p>Use a unified framework that generalizes classical statistical analysis to complex geometric contexts.</p></li>
-<li><p>Apply these techniques to both synthetic and real high-dimensional datasets.</p></li>
+<li><p>Transformation of data tables into Riemannian manifolds via UMAP-based metrics.</p></li>
+<li><p>Riemannian correlation and covariance computation.</p></li>
+<li><p>Extraction of Riemannian principal components.</p></li>
+<li><p>Intuitive 2D/3D visualizations reflecting the manifold’s geometry.</p></li>
+<li><p>Applications in high-dimensional data, image analysis, clustering, and beyond.</p></li>
 </ul>
-<p>This package is ideal for researchers, data scientists, and developers seeking to move beyond the traditional assumptions of classical statistics, applying models that respect the intrinsic structure of data.</p>
-<p><strong>User Guide</strong></p>
+<p>The core idea is simple yet powerful: <strong>treat your dataset not as flat, but as curved</strong>—honoring its internal structure. This unlocks more expressive models, better visualizations, and more accurate statistical summaries.</p>
+<p><strong>Ideal for</strong> researchers, data scientists, and developers looking to enhance their analysis of complex datasets with geometry-aware tools.</p>
+<section id="user-guide">
+<h2><strong>User Guide</strong><a class="headerlink" href="#user-guide" title="Link to this heading">¶</a></h2>
 <div class="card-grid">
     <a href="examples.html" class="card">
         <img src="_static/icons/example.svg" alt="Examples">
@@ -282,7 +285,7 @@
         <img src="_static/icons/package.png" alt="Riemannian STATS">
         <span>Riemannian STATS Modules</span>
     </a>
- <a href="contributing.html" class="card">
+    <a href="contributing.html" class="card">
         <img src="_static/icons/github.png" alt="Source Code and Contributors">
         <span>Source Code and Contributors</span>
     </a>
@@ -292,6 +295,7 @@
     </a>
 </div><div class="toctree-wrapper compound">
 </div>
+</section>
 </section>
 
         </article>
@@ -327,8 +331,27 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Riemannian STATS</a><ul>
+<li><a class="reference internal" href="#user-guide"><strong>User Guide</strong></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

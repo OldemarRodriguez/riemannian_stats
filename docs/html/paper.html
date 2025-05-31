@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="_static/css/base.css?v=cdbd32de" />
+    <link rel="stylesheet" type="text/css" href="_static/css/base.css?v=c7ecea0c" />
     <link rel="stylesheet" type="text/css" href="_static/css/light.css?v=63f92758" />
     <link rel="stylesheet" type="text/css" href="_static/css/dark.css?v=04b6e365" />
     
@@ -181,7 +181,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -247,7 +247,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -255,7 +255,32 @@
         <article role="main" id="furo-main-content">
           <section id="scientific-paper">
 <h1>Scientific Paper<a class="headerlink" href="#scientific-paper" title="Link to this heading">¶</a></h1>
-<p>This section will include references or summary of the scientific paper motivating this package.</p>
+<p>This section highlights the scientific foundation behind the <strong>Riemannian STATS</strong> package.</p>
+<section id="riemannian-principal-component-analysis">
+<h2>Riemannian Principal Component Analysis<a class="headerlink" href="#riemannian-principal-component-analysis" title="Link to this heading">¶</a></h2>
+<p><strong>R-PCA</strong> is a novel extension of Principal Component Analysis designed to operate on datasets that reside on
+non-Euclidean spaces. Instead of assuming a flat Euclidean structure, R-PCA leverages local geometric information,
+derived via the <strong>UMAP</strong> algorithm, to define a <strong>Riemannian manifold</strong> over the data. This allows for more accurate
+dimensionality reduction and statistical analysis that respects the intrinsic structure of complex datasets.</p>
+<p><strong>Applications include</strong>:</p>
+<ul class="simple">
+<li><p>High-dimensional structured data</p></li>
+<li><p>Clustering with geometric consistency</p></li>
+<li><p>Real-world datasets such as image sets (e.g., Olivetti Faces)</p></li>
+</ul>
+<p>R-PCA improves interpretability, variance capture, and clustering performance compared to standard
+PCA especially in cases where local metrics vary significantly across the dataset.</p>
+<p>📄 <a class="reference external" href="_static/papers/RiemannianPCA_OldemarRodriguez.pdf">Link to the complete paper: “Riemannian Principal Component Analysis”</a></p>
+<div style="text-align:center; margin: 1.5em 0;">
+    <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/MLAVRK_lGKs"
+            title="R-PCA Presentation"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+    </iframe>
+    <p style="font-style: italic; font-size: 90%;">Watch the official presentation introducing the concepts behind R-PCA. <strong>(Video in Spanish)</strong></p>
+</div></section>
 </section>
 
         </article>
@@ -293,8 +318,27 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Scientific Paper</a><ul>
+<li><a class="reference internal" href="#riemannian-principal-component-analysis">Riemannian Principal Component Analysis</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

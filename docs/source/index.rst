@@ -3,26 +3,29 @@
    :width: 500px
    :align: center
 
-
 Riemannian STATS
 ================
 
 **Riemannian STATS: Statistical Analysis on Riemannian Manifolds**
 
-**Riemannian STATS** is an open-source package that implements a novel principal component analysis methodology adapted for data on Riemannian manifolds, using UMAP as a core tool to construct the underlying geometric structure. This tool enables advanced statistical techniques to be applied to any type of dataset, honoring its local geometry, without requiring the data to originate from traditionally geometric domains like medical imaging or shape analysis.
+**Riemannian STATS** is a Python package designed to extend classical multivariate statistical methods to data that lie on non-Euclidean spaces. This package introduces a general framework for **Riemannian Principal Component Analysis (R-PCA)**, a method developed to operate on datasets modeled as **Riemannian manifolds**. The foundational ideas are presented in the scientific paper `"Riemannian Principal Component Analysis"` by Oldemar Rodríguez.
 
-Instead of assuming data resides in Euclidean space, RiemannianStats transforms any data table into a Riemannian manifold by leveraging the local connectivity extracted from a UMAP-generated k-nearest neighbor graph. On top of this structure, the package computes Riemannian principal components, covariance and correlation matrices, and even provides 2D and 3D visualizations that faithfully capture the dataset’s topology.
+Unlike traditional PCA, which assumes a flat Euclidean geometry, R-PCA uses **UMAP** to define local distances and induce a Riemannian structure from any data table—structured or unstructured, real or synthetic. This enables geometric-aware dimensionality reduction and correlation analysis, even on datasets with complex topologies, non-linear relationships, or varying local densities.
 
-With **Riemannian STATS**, you can:
+Built on these principles, **Riemannian STATS** enables:
 
-* Incorporate the local geometry of your data for meaningful dimensionality reduction.
-* Generate visual representations that better reflect the true structure of your data.
-* Use a unified framework that generalizes classical statistical analysis to complex geometric contexts.
-* Apply these techniques to both synthetic and real high-dimensional datasets.
+- Transformation of data tables into Riemannian manifolds via UMAP-based metrics.
+- Riemannian correlation and covariance computation.
+- Extraction of Riemannian principal components.
+- Intuitive 2D/3D visualizations reflecting the manifold’s geometry.
+- Applications in high-dimensional data, image analysis, clustering, and beyond.
 
-This package is ideal for researchers, data scientists, and developers seeking to move beyond the traditional assumptions of classical statistics, applying models that respect the intrinsic structure of data.
+The core idea is simple yet powerful: **treat your dataset not as flat, but as curved**—honoring its internal structure. This unlocks more expressive models, better visualizations, and more accurate statistical summaries.
+
+**Ideal for** researchers, data scientists, and developers looking to enhance their analysis of complex datasets with geometry-aware tools.
 
 **User Guide**
+--------------
 
 .. raw:: html
 
@@ -39,7 +42,7 @@ This package is ideal for researchers, data scientists, and developers seeking t
            <img src="_static/icons/package.png" alt="Riemannian STATS">
            <span>Riemannian STATS Modules</span>
        </a>
-    <a href="contributing.html" class="card">
+       <a href="contributing.html" class="card">
            <img src="_static/icons/github.png" alt="Source Code and Contributors">
            <span>Source Code and Contributors</span>
        </a>
@@ -56,7 +59,7 @@ This package is ideal for researchers, data scientists, and developers seeking t
       :maxdepth: 1
 
       How to Use Riemannian STATS       <examples>
-      Install Riemannian STATS           <installation>
+      Install Riemannian STATS          <installation>
       RiemannianStats Modules           <riemannian_stats>
       Source Code and Contributors      <contributing>
       Scientific Paper                  <paper>
