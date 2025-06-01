@@ -29,9 +29,9 @@ from riemannian_stats import riemannian_analysis, visualization, utilities
 import pandas as pd
 
 # ---------------------------
-# Example 3: Data10D_250 Dataset
+# Load the Data10D_250 dataset
 # ---------------------------
-# Load the Data10D_250.csv dataset using pd.read_csv, specifying the separator and decimal format.
+# Load the Data10D.csv dataset using pd.read_csv, specifying the separator and decimal format.
 data = pd.read_csv("./data/Data10D_250.csv", sep=",", decimal=".")
 
 # Define the number of neighbors as the length of the data divided by the number of clusters (in this example, 5).
@@ -46,58 +46,64 @@ else:
     clusters = None
     data_with_clusters = data
 
-# Create an instance of Riemannian analysis for the dataset.
+# ---------------------------
+# Create an instance of Riemannian analysis
+# ---------------------------
 analysis = riemannian_analysis(data, n_neighbors=n_neighbors)
 
-# --------------------------------------------------------
-# Compute UMAP graph similarities and the rho matrix for the data.
-# --------------------------------------------------------
+# ---------------------------
+# Compute Riemannian matrices and distances
+# ---------------------------
 umap_similarities = analysis.umap_similarities
-print("calculate_umap_graph_similarities:", umap_similarities)
+print("UMAP Similarities Matrix:", umap_similarities)
 
 rho = analysis.rho
-print("calculate_rho_matrix:", rho)
+print("Rho Matrix:", rho)
 
-# --------------------------------------------------------
-# Compute Riemannian vector differences and the UMAP distance matrix.
-# --------------------------------------------------------
 riemannian_diff = analysis.riemannian_diff
-print("riemannian_vector_difference:", riemannian_diff)
+print("Riemannian Vector Differences:", riemannian_diff)
 
 umap_distance_matrix = analysis.umap_distance_matrix
-print("calculate_umap_distance_matrix:", umap_distance_matrix)
+print("UMAP Distance Matrix:", umap_distance_matrix)
 
-# --------------------------------------------------------
-# Compute the Riemannian correlation matrices, and extract principal components.
-# --------------------------------------------------------
+# ---------------------------
+# Compute the correlation matrix and extract components
+# ---------------------------
 riemann_corr = analysis.riemannian_correlation_matrix()
-print("riemannian_correlation_matrix:", riemann_corr)
+print("Riemannian Correlation Matrix:", riemann_corr)
 
 riemann_components = analysis.riemannian_components_from_data_and_correlation(riemann_corr)
-print("riemannian_components_from_data_and_correlation:", riemann_components)
+print("Principal Components:", riemann_components)
 
-# --------------------------------------------------------
-# Compute the explained inertia (using components 0 and 1).
-# --------------------------------------------------------
+# ---------------------------
+# Compute explained inertia and variable-component correlations
+# ---------------------------
 comp1, comp2 = 0, 1
 inertia = utilities.pca_inertia_by_components(riemann_corr, comp1, comp2) * 100
-print("pca_inertia_by_components:", inertia)
+print("Explained Inertia (%):", inertia)
 
-# --------------------------------------------------------
-# Compute correlations between original variables and the first two principal components.
-# --------------------------------------------------------
 correlations = analysis.riemannian_correlation_variables_components(riemann_components)
-print("riemannian_correlation_variables_components:", correlations)
+print("Variable-Component Correlations:", correlations)
 
-# --------------------------------------------------------
-# Visualization: Create plots based on the availability of clusters.
-# If clusters are provided, use cluster-based plots; otherwise, use plots without clusters.
-# --------------------------------------------------------
+# ---------------------------
+# Prepare data for visualization
+# ---------------------------
+data_viz = data_with_clusters.copy()
+data_viz['x'] = riemann_components[:, 0]
+data_viz['y'] = riemann_components[:, 1]
+data_viz['var1'] = riemann_components[:, 2] if riemann_components.shape[1] > 2 else 0
 if clusters is not None:
-    viz = visualization(data=data_with_clusters,
+    data_viz['cluster'] = clusters
+
+# ---------------------------
+# Generate visualizations
+# ---------------------------
+if clusters is not None:
+    viz = visualization(data=data_viz,
                         components=riemann_components,
                         explained_inertia=inertia,
                         clusters=clusters)
+
     try:
         viz.plot_2d_scatter_with_clusters(x_col="x", y_col="y", cluster_col="cluster", title="Data10D_250.csv")
     except Exception as e:
@@ -114,7 +120,7 @@ if clusters is not None:
     except Exception as e:
         print("3D scatter plot with clusters failed:", e)
 else:
-    viz = visualization(data=data,
+    viz = visualization(data=data_viz,
                         components=riemann_components,
                         explained_inertia=inertia)
     try:
@@ -122,7 +128,6 @@ else:
     except Exception as e:
         print("Principal plane plot failed:", e)
 
-# Plot the correlation circle (works regardless of clusters).
 try:
     viz.plot_correlation_circle(correlations=correlations, title="Data10D_250.csv")
 except Exception as e:

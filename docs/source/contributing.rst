@@ -18,7 +18,7 @@ You can visit the repository to:
 Contributing Guide
 ------------------
 
-Thank you for your interest in contributing to the **Riemannian STATS** project! Contributions of all types are welcome—code improvements, bug reports, documentation enhancements, and feature suggestions.
+Thank you for your interest in contributing to the **Riemannian STATS** project! Contributions of all types are welcome, code improvements, bug reports, documentation enhancements, and feature suggestions.
 
 How to Contribute
 ~~~~~~~~~~~~~~~~~
@@ -121,7 +121,7 @@ Or using ``pytest``:
 Pull Request Reviews
 ^^^^^^^^^^^^^^^^^^^^
 
-The maintainers will review your pull request and may suggest improvements. Communication and iteration are key—don’t hesitate to ask questions or discuss alternatives!
+The maintainers will review your pull request and may suggest improvements. Communication and iteration are key-don’t hesitate to ask questions or discuss alternatives!
 
 Questions?
 ^^^^^^^^^^

@@ -256,6 +256,3 @@ If you encounter any issues or have suggestions for improvements, please open an
   Setuptools is a package development and distribution tool used to package Python projects and manage dependencies.  
   📦 PyPI: [setuptools · PyPI](https://pypi.org/project/setuptools/)
 
----
-
-```

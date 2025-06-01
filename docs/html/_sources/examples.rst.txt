@@ -22,7 +22,7 @@ Riemannian STATS supports multiple import styles to improve user flexibility and
 
     from riemannian_stats import riemannian_analysis, dataprocessing, visualization, utilities
 
-Both approaches provide access to the same classes—choose the one that suits your workflow.
+Both approaches provide access to the same classes, choose the one that suits your workflow.
 
 
 Example 1: Iris Dataset

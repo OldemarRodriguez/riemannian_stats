@@ -20,8 +20,11 @@ dimensionality reduction and statistical analysis that respects the intrinsic st
 R-PCA improves interpretability, variance capture, and clustering performance compared to standard
 PCA especially in cases where local metrics vary significantly across the dataset.
 
-📄 `Link to the complete paper: "Riemannian Principal Component Analysis" <_static/papers/RiemannianPCA_OldemarRodriguez.pdf>`_
+.. raw:: html
 
+   <a href="_static/papers/RiemannianPCA_OldemarRodriguez.pdf" target="_blank">
+   📄 Link to the complete paper: "Riemannian Principal Component Analysis"
+   </a>
 
 .. raw:: html
 
