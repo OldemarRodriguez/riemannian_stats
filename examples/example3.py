@@ -83,26 +83,33 @@ print("Variable-Component Correlations:", correlations)
 # ---------------------------
 # Visualization
 # ---------------------------
+# Prepare data for visualization
 data_with_clusters = data.copy()
+data_with_clusters['x'] = riemann_components[:, 0]
+data_with_clusters['y'] = riemann_components[:, 1]
+data_with_clusters['var1'] = riemann_components[:, 2] if riemann_components.shape[1] > 2 else 0
+data_with_clusters['cluster'] = clusters
 
+
+# Generate visualizations
 viz = visualization(data=data_with_clusters,
                     components=riemann_components,
                     explained_inertia=inertia,
                     clusters=clusters)
 
 try:
-    viz.plot_2d_scatter_with_clusters(x_col="x", y_col="y", cluster_col="cluster", title="Olivetti Faces", figsize=(12, 8))
+    viz.plot_2d_scatter_with_clusters(x_col="x", y_col="y", cluster_col="cluster", title="Olivetti Faces", figsize=(14, 8))
 except Exception as e:
     print("2D Scatter Plot Failed:", e)
 
 try:
-    viz.plot_principal_plane_with_clusters(title="Olivetti Faces", figsize=(12, 8))
+    viz.plot_principal_plane_with_clusters(title="Olivetti Faces", figsize=(14, 8))
 except Exception as e:
     print("Principal Plane Plot Failed:", e)
 
 try:
     viz.plot_3d_scatter_with_clusters(x_col="x", y_col="y", z_col="var1", cluster_col="cluster",
-                                      title="Olivetti Faces", figsize=(12, 8))
+                                      title="Olivetti Faces", figsize=(14, 8))
 except Exception as e:
     print("3D Scatter Plot Failed:", e)
 
