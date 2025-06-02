@@ -18,26 +18,23 @@ class TestPCAInertiaByComponents(unittest.TestCase):
         It initializes a valid 3x3 correlation matrix and an invalid non-square matrix
         to test both valid and edge-case scenarios.
         """
-        self.valid_corr_matrix = np.array([
-            [1.0, 0.8, 0.5],
-            [0.8, 1.0, 0.3],
-            [0.5, 0.3, 1.0]
-        ])
+        self.valid_corr_matrix = np.array(
+            [[1.0, 0.8, 0.5], [0.8, 1.0, 0.3], [0.5, 0.3, 1.0]]
+        )
 
-        self.invalid_corr_matrix = np.array([
-            [1.0, 0.8],
-            [0.8, 1.0],
-            [0.5, 0.3]
-        ])
+        self.invalid_corr_matrix = np.array([[1.0, 0.8], [0.8, 1.0], [0.5, 0.3]])
 
     def test_valid_components(self):
         """
         Verifies that the explained inertia value for valid components
         lies between 0 and 1 (inclusive).
         """
-        explained_inertia = utilities.pca_inertia_by_components(self.valid_corr_matrix, 0, 1)
-        self.assertTrue(0 <= explained_inertia <= 1,
-                        "Explained inertia must be between 0 and 1.")
+        explained_inertia = utilities.pca_inertia_by_components(
+            self.valid_corr_matrix, 0, 1
+        )
+        self.assertTrue(
+            0 <= explained_inertia <= 1, "Explained inertia must be between 0 and 1."
+        )
 
     def test_invalid_corr_matrix(self):
         """
@@ -67,9 +64,13 @@ class TestPCAInertiaByComponents(unittest.TestCase):
         total_inertia = np.sum(eigenvalues)
         selected_inertia = np.sum(eigenvalues)  # sum of all eigenvalues
         explained_inertia = selected_inertia / total_inertia
-        self.assertAlmostEqual(explained_inertia, 1.0, places=5,
-                               msg="Total inertia should sum up approximately to 1.")
+        self.assertAlmostEqual(
+            explained_inertia,
+            1.0,
+            places=5,
+            msg="Total inertia should sum up approximately to 1.",
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

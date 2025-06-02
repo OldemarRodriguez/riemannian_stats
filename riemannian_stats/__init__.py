@@ -26,10 +26,9 @@ __all__ = [
     "RiemannianAnalysis",
     "Visualization",
     "Utilities",
-
     # lowercase aliases
     "data_processing",
     "riemannian_analysis",
     "visualization",
-    "utilities"
+    "utilities",
 ]

@@ -24,6 +24,7 @@ Finally, the script generates various visualizations depending on whether cluste
 This example illustrates the flexibility of riemannian_stats in handling a classical, lower-dimensional dataset
 with clusters, enabling a comprehensive visual exploration of the data.
 """
+
 from riemannian_stats import riemannian_analysis, visualization, utilities
 import pandas as pd
 
@@ -37,8 +38,8 @@ data = pd.read_csv("./data/iris.csv", sep=";", decimal=".")
 n_neighbors = int(len(data) / 3)
 
 # Check if the 'species' column exists to identify groups (clusters).
-if 'species' in data.columns:
-    clusters = data['species']
+if "species" in data.columns:
+    clusters = data["species"]
     # Keep a copy of the original DataFrame (with the 'species' column) for 2D and 3D visualizations.
     data_with_clusters = data.copy()
     # Remove the 'species' column from the data for analysis (if needed).
@@ -74,7 +75,9 @@ print("calculate_umap_distance_matrix:", umap_distance_matrix)
 riemann_corr = analysis.riemannian_correlation_matrix()
 print("riemannian_correlation_matrix:", riemann_corr)
 
-riemann_components = analysis.riemannian_components_from_data_and_correlation(riemann_corr)
+riemann_components = analysis.riemannian_components_from_data_and_correlation(
+    riemann_corr
+)
 print("riemannian_components_from_data_and_correlation:", riemann_components)
 
 # --------------------------------------------------------
@@ -96,13 +99,20 @@ print("riemannian_correlation_variables_components:", correlations)
 # --------------------------------------------------------
 if clusters is not None:
     # Create a Visualization instance including cluster information.
-    viz = visualization(data=data_with_clusters,
-                        components=riemann_components,
-                        explained_inertia=inertia,
-                        clusters=clusters)
+    viz = visualization(
+        data=data_with_clusters,
+        components=riemann_components,
+        explained_inertia=inertia,
+        clusters=clusters,
+    )
     try:
         # 1. 2D scatter plot with clusters (requires the 'species' column in the DataFrame).
-        viz.plot_2d_scatter_with_clusters(x_col="sepal.length", y_col="sepal.width", cluster_col="species", title="iris.csv")
+        viz.plot_2d_scatter_with_clusters(
+            x_col="sepal.length",
+            y_col="sepal.width",
+            cluster_col="species",
+            title="iris.csv",
+        )
     except Exception as e:
         print("2D scatter plot with clusters failed:", e)
 
@@ -114,15 +124,21 @@ if clusters is not None:
 
     try:
         # 3. 3D scatter plot with clusters (requires the 'species' column and appropriate 3D data columns).
-        viz.plot_3d_scatter_with_clusters(x_col="sepal.length", y_col="sepal.width", z_col="petal.length", cluster_col="species",
-                                          title="iris.csv", figsize=(12, 8))
+        viz.plot_3d_scatter_with_clusters(
+            x_col="sepal.length",
+            y_col="sepal.width",
+            z_col="petal.length",
+            cluster_col="species",
+            title="iris.csv",
+            figsize=(12, 8),
+        )
     except Exception as e:
         print("3D scatter plot with clusters failed:", e)
 else:
     # Create a Visualization instance without clusters.
-    viz = visualization(data=data,
-                        components=riemann_components,
-                        explained_inertia=inertia)
+    viz = visualization(
+        data=data, components=riemann_components, explained_inertia=inertia
+    )
     try:
         # Plot the principal plane (does not require cluster information).
         viz.plot_principal_plane(title="iris.csv")

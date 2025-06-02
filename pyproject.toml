@@ -28,6 +28,21 @@ plot = [
     "pandas>=2.0.3,<2.3"
 ]
 
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+  | __pycache__
+  | .*\.egg-info
+)/
+'''
+
 [project.urls]
 Homepage = "https://github.com/OldemarRodriguez/riemannian_stats"
 Repository = "https://github.com/OldemarRodriguez/riemannian_stats.git"

@@ -38,8 +38,8 @@ data = pd.read_csv("./data/Data10D_250.csv", sep=",", decimal=".")
 n_neighbors = int(len(data) / 5)
 
 # Check if the 'cluster' column exists to identify groups (clusters).
-if 'cluster' in data.columns:
-    clusters = data['cluster']
+if "cluster" in data.columns:
+    clusters = data["cluster"]
     data_with_clusters = data.copy()
     data = data.iloc[:, :-1]
 else:
@@ -73,7 +73,9 @@ print("calculate_umap_distance_matrix:", umap_distance_matrix)
 riemann_corr = analysis.riemannian_correlation_matrix()
 print("riemannian_correlation_matrix:", riemann_corr)
 
-riemann_components = analysis.riemannian_components_from_data_and_correlation(riemann_corr)
+riemann_components = analysis.riemannian_components_from_data_and_correlation(
+    riemann_corr
+)
 print("riemannian_components_from_data_and_correlation:", riemann_components)
 
 # --------------------------------------------------------
@@ -94,12 +96,16 @@ print("riemannian_correlation_variables_components:", correlations)
 # If clusters are provided, use cluster-based plots; otherwise, use plots without clusters.
 # --------------------------------------------------------
 if clusters is not None:
-    viz = visualization(data=data_with_clusters,
-                        components=riemann_components,
-                        explained_inertia=inertia,
-                        clusters=clusters)
+    viz = visualization(
+        data=data_with_clusters,
+        components=riemann_components,
+        explained_inertia=inertia,
+        clusters=clusters,
+    )
     try:
-        viz.plot_2d_scatter_with_clusters(x_col="x", y_col="y", cluster_col="cluster", title="Data10D_250.csv")
+        viz.plot_2d_scatter_with_clusters(
+            x_col="x", y_col="y", cluster_col="cluster", title="Data10D_250.csv"
+        )
     except Exception as e:
         print("2D scatter plot with clusters failed:", e)
 
@@ -109,14 +115,20 @@ if clusters is not None:
         print("Principal plane with clusters plot failed:", e)
 
     try:
-        viz.plot_3d_scatter_with_clusters(x_col="x", y_col="y", z_col="var1", cluster_col="cluster",
-                                          title="Data10D_250.csv", figsize=(12, 8))
+        viz.plot_3d_scatter_with_clusters(
+            x_col="x",
+            y_col="y",
+            z_col="var1",
+            cluster_col="cluster",
+            title="Data10D_250.csv",
+            figsize=(12, 8),
+        )
     except Exception as e:
         print("3D scatter plot with clusters failed:", e)
 else:
-    viz = visualization(data=data,
-                        components=riemann_components,
-                        explained_inertia=inertia)
+    viz = visualization(
+        data=data, components=riemann_components, explained_inertia=inertia
+    )
     try:
         viz.plot_principal_plane(title="Data10D_250.csv")
     except Exception as e:

@@ -11,7 +11,9 @@ class DataProcessing:
     """
 
     @staticmethod
-    def load_data(filepath: str, separator: str = ";", decimal: str = ".") -> pd.DataFrame:
+    def load_data(
+        filepath: str, separator: str = ";", decimal: str = "."
+    ) -> pd.DataFrame:
         """
         Load a CSV file into a pandas DataFrame.
 

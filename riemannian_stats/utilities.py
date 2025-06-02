@@ -13,7 +13,9 @@ class Utilities:
     """
 
     @staticmethod
-    def pca_inertia_by_components(correlation_matrix: np.ndarray, component1: int, component2: int) -> float:
+    def pca_inertia_by_components(
+        correlation_matrix: np.ndarray, component1: int, component2: int
+    ) -> float:
         """
         Calculates the inertia (explained variance ratio) of two specified principal components from a correlation matrix.
 
@@ -31,13 +33,16 @@ class Utilities:
         if correlation_matrix.shape[0] != correlation_matrix.shape[1]:
             raise ValueError("The correlation matrix must be square.")
 
-        if not (0 <= component1 < correlation_matrix.shape[0]) or not (0 <= component2 < correlation_matrix.shape[0]):
+        if not (0 <= component1 < correlation_matrix.shape[0]) or not (
+            0 <= component2 < correlation_matrix.shape[0]
+        ):
             raise ValueError("Component indices are out of bounds.")
 
         eigenvalues, _ = np.linalg.eig(correlation_matrix)
         sorted_eigenvalues = np.sort(eigenvalues)[::-1]
 
         total_inertia = np.sum(sorted_eigenvalues)
-        selected_inertia = sorted_eigenvalues[component1] + sorted_eigenvalues[component2]
+        selected_inertia = (
+            sorted_eigenvalues[component1] + sorted_eigenvalues[component2]
+        )
         return selected_inertia / total_inertia
-

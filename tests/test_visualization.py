@@ -18,22 +18,26 @@ class TestVisualization(unittest.TestCase):
         necessary components using RiemannianUMAPAnalysis. Also creates a Visualization
         instance with clustering and explained inertia.
         """
-        self.data = pd.DataFrame({
-            'a': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            'b': [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-            'cluster': [0, 1, 0, 1, 0, 1, 0, 0, 0, 1]
-        })
+        self.data = pd.DataFrame(
+            {
+                "a": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                "b": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+                "cluster": [0, 1, 0, 1, 0, 1, 0, 0, 0, 1],
+            }
+        )
 
-        self.analysis = riemannian_analysis(self.data[['a', 'b']], n_neighbors=2)
+        self.analysis = riemannian_analysis(self.data[["a", "b"]], n_neighbors=2)
 
         self.corr_matrix = self.analysis.riemannian_correlation_matrix()
         self.components = self.analysis.riemannian_components(self.corr_matrix)
         self.inertia = utilities.pca_inertia_by_components(self.corr_matrix, 0, 1) * 100
 
-        self.viz = visualization(data=self.data,
-                                 components=self.components,
-                                 explained_inertia=self.inertia,
-                                 clusters=self.data['cluster'].values)
+        self.viz = visualization(
+            data=self.data,
+            components=self.components,
+            explained_inertia=self.inertia,
+            clusters=self.data["cluster"].values,
+        )
 
     def test_plot_principal_plane(self):
         """
@@ -50,17 +54,25 @@ class TestVisualization(unittest.TestCase):
         rendering a principal plane with color-coded cluster groups.
         """
         try:
-            self.viz.plot_principal_plane_with_clusters(title="Test Principal Plane with Clusters")
+            self.viz.plot_principal_plane_with_clusters(
+                title="Test Principal Plane with Clusters"
+            )
         except Exception as e:
-            self.fail(f"plot_principal_plane_with_clusters raised an exception unexpectedly: {e}")
+            self.fail(
+                f"plot_principal_plane_with_clusters raised an exception unexpectedly: {e}"
+            )
 
     def test_plot_correlation_circle(self):
         """
         Test that the correlation circle plot is generated successfully using variable-component correlations.
         """
-        correlations = self.analysis.riemannian_correlation_variables_components(self.components)
+        correlations = self.analysis.riemannian_correlation_variables_components(
+            self.components
+        )
         try:
-            self.viz.plot_correlation_circle(correlations=correlations, title="Test Correlation Circle")
+            self.viz.plot_correlation_circle(
+                correlations=correlations, title="Test Correlation Circle"
+            )
         except Exception as e:
             self.fail(f"plot_correlation_circle raised an exception unexpectedly: {e}")
 
@@ -69,10 +81,16 @@ class TestVisualization(unittest.TestCase):
         Test that a 2D scatter plot with cluster coloring is generated without errors.
         """
         try:
-            self.viz.plot_2d_scatter_with_clusters(x_col='a', y_col='b', cluster_col='cluster',
-                                                   title="Test 2D Scatter with Clusters")
+            self.viz.plot_2d_scatter_with_clusters(
+                x_col="a",
+                y_col="b",
+                cluster_col="cluster",
+                title="Test 2D Scatter with Clusters",
+            )
         except Exception as e:
-            self.fail(f"plot_2d_scatter_with_clusters raised an exception unexpectedly: {e}")
+            self.fail(
+                f"plot_2d_scatter_with_clusters raised an exception unexpectedly: {e}"
+            )
 
     def test_plot_3d_scatter_with_clusters(self):
         """
@@ -81,14 +99,21 @@ class TestVisualization(unittest.TestCase):
         This test extends the dataset with a third dimension and verifies
         that plot_3d_scatter_with_clusters executes successfully.
         """
-        self.data['c'] = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+        self.data["c"] = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
         self.viz._data = self.data
         try:
-            self.viz.plot_3d_scatter_with_clusters(x_col='a', y_col='b', z_col='c', cluster_col='cluster',
-                                                   title="Test 3D Scatter with Clusters")
+            self.viz.plot_3d_scatter_with_clusters(
+                x_col="a",
+                y_col="b",
+                z_col="c",
+                cluster_col="cluster",
+                title="Test 3D Scatter with Clusters",
+            )
         except Exception as e:
-            self.fail(f"plot_3d_scatter_with_clusters raised an exception unexpectedly: {e}")
+            self.fail(
+                f"plot_3d_scatter_with_clusters raised an exception unexpectedly: {e}"
+            )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

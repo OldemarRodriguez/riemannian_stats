@@ -1,28 +1,29 @@
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../..'))
+
+sys.path.insert(0, os.path.abspath("../.."))
 
 # -- Project Information --
 
-project = 'RiemannianStats'
-author = 'Oldemar Rodríguez Rojas, Jennifer Lobo Vásquez'
-release = '1.0.0'
+project = "RiemannianStats"
+author = "Oldemar Rodríguez Rojas, Jennifer Lobo Vásquez"
+release = "1.0.0"
 
 # -- General Configuration --
 
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.todo',
-    'sphinx.ext.mathjax',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.todo",
+    "sphinx.ext.mathjax",
 ]
 
-templates_path = ['_templates']
+templates_path = ["_templates"]
 exclude_patterns = []
 
 # -- HTML Output Options --
 
-html_theme = 'furo'
+html_theme = "furo"
 
 html_title = "Riemannian STATS"
 
@@ -33,24 +34,22 @@ html_theme_options = {
 }
 
 
-html_static_path = ['_static']
+html_static_path = ["_static"]
 
 html_css_files = [
-    'css/base.css',   # común
-    'css/light.css',  # modo claro
-    'css/dark.css'    # modo oscuro
+    "css/base.css",  # común
+    "css/light.css",  # modo claro
+    "css/dark.css",  # modo oscuro
 ]
 
-html_js_files = [
-    'js/theme-switch.js'
-]
+html_js_files = ["js/theme-switch.js"]
 
 # -- Autodoc Settings --
 
 autodoc_default_options = {
-    'members': True,
-    'undoc-members': True,
-    'show-inheritance': True,
+    "members": True,
+    "undoc-members": True,
+    "show-inheritance": True,
 }
 
 # -- Napoleon Settings (for Google/NumPy docstrings) --
@@ -62,5 +61,5 @@ napoleon_numpy_docstring = True
 
 todo_include_todos = True
 source_suffix = {
-    '.rst': 'restructuredtext',
+    ".rst": "restructuredtext",
 }

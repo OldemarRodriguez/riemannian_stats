@@ -34,22 +34,27 @@ class Visualization:
             3D scatter plot of selected features colored by clusters.
     """
 
-    def __init__(self, data: pd.DataFrame, components: Optional[np.ndarray] = None,
-                 explained_inertia: float = 0.0, clusters: Optional[np.ndarray] = None) -> None:
+    def __init__(
+        self,
+        data: pd.DataFrame,
+        components: Optional[np.ndarray] = None,
+        explained_inertia: float = 0.0,
+        clusters: Optional[np.ndarray] = None,
+    ) -> None:
         """
-            Initializes the Visualization object with data and optional component, cluster, and variance information.
+        Initializes the Visualization object with data and optional component, cluster, and variance information.
 
-            Parameters:
-                data (pd.DataFrame): The dataset to be used for plotting (index used as labels).
-                components (np.ndarray, optional): Matrix of principal components or UMAP embeddings (n_samples, n_components).
-                explained_inertia (float, optional): Percentage of variance explained by the components. Default is 0.0.
-                clusters (np.ndarray, optional): Optional array of cluster labels aligned with data rows.
+        Parameters:
+            data (pd.DataFrame): The dataset to be used for plotting (index used as labels).
+            components (np.ndarray, optional): Matrix of principal components or UMAP embeddings (n_samples, n_components).
+            explained_inertia (float, optional): Percentage of variance explained by the components. Default is 0.0.
+            clusters (np.ndarray, optional): Optional array of cluster labels aligned with data rows.
 
-            Notes:
-                - Internally uses protected attributes (_data, _components, _explained_inertia, _clusters).
-                - Read-only properties are used to safely expose internal data.
-                - Most plots assume at least 2D components or features for visualization.
-            """
+        Notes:
+            - Internally uses protected attributes (_data, _components, _explained_inertia, _clusters).
+            - Read-only properties are used to safely expose internal data.
+            - Most plots assume at least 2D components or features for visualization.
+        """
 
         self._data = data
         self._components = components
@@ -86,7 +91,9 @@ class Visualization:
         else:
             return plt.cm.get_cmap("nipy_spectral", n_clusters)
 
-    def plot_principal_plane(self, title: str = "", figsize: Tuple[int, int] = (10, 8)) -> None:
+    def plot_principal_plane(
+        self, title: str = "", figsize: Tuple[int, int] = (10, 8)
+    ) -> None:
         """
         Generates a plot of the principal plane using the principal components.
 
@@ -98,7 +105,9 @@ class Visualization:
         if title:
             full_title = f"{title}\n{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
         else:
-            full_title = f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+            full_title = (
+                f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+            )
         x, y = self.components[:, 0], self.components[:, 1]
         plt.figure(figsize=figsize)
         plt.scatter(x, y, color="gray")
@@ -112,8 +121,14 @@ class Visualization:
         plt.tight_layout()
         plt.show()
 
-    def plot_correlation_circle(self, correlations: pd.DataFrame, title: str = "", scale: float = 1,
-                                draw_circle: bool = True, figsize: Tuple[int, int] = (8, 8)) -> None:
+    def plot_correlation_circle(
+        self,
+        correlations: pd.DataFrame,
+        title: str = "",
+        scale: float = 1,
+        draw_circle: bool = True,
+        figsize: Tuple[int, int] = (8, 8),
+    ) -> None:
         """
         Generates a correlation circle for the principal components.
 
@@ -128,7 +143,9 @@ class Visualization:
         if title:
             full_title = f"{title}\n{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
         else:
-            full_title = f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+            full_title = (
+                f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+            )
         plt.figure(figsize=figsize)
         if draw_circle:
             circle = plt.Circle((0, 0), radius=1.05, color="steelblue", fill=False)
@@ -137,15 +154,30 @@ class Visualization:
         plt.axhline(y=0, color="dimgrey", linestyle="--")
         plt.axvline(x=0, color="dimgrey", linestyle="--")
         for i in range(correlations.shape[0]):
-            plt.arrow(0, 0, correlations.iloc[i, 0] * scale, correlations.iloc[i, 1] * scale,
-                      color="steelblue", alpha=0.5, head_width=0.05, head_length=0.05)
-            plt.text(correlations.iloc[i, 0] * scale, correlations.iloc[i, 1] * scale,
-                     self.data.columns[i], fontsize=9, ha="right")
+            plt.arrow(
+                0,
+                0,
+                correlations.iloc[i, 0] * scale,
+                correlations.iloc[i, 1] * scale,
+                color="steelblue",
+                alpha=0.5,
+                head_width=0.05,
+                head_length=0.05,
+            )
+            plt.text(
+                correlations.iloc[i, 0] * scale,
+                correlations.iloc[i, 1] * scale,
+                self.data.columns[i],
+                fontsize=9,
+                ha="right",
+            )
         plt.title(full_title)
         plt.tight_layout()
         plt.show()
 
-    def plot_principal_plane_with_clusters(self, title: str = "", figsize: Tuple[int, int] = (10, 8)) -> None:
+    def plot_principal_plane_with_clusters(
+        self, title: str = "", figsize: Tuple[int, int] = (10, 8)
+    ) -> None:
         """
         Generates a plot of the principal plane with points colored according to clusters,
         using a color map that supports many distinct clusters.
@@ -158,8 +190,11 @@ class Visualization:
             raise ValueError("Cluster information is required for this plot.")
 
         default_title = "Principal Plane With Clusters"
-        full_title = f"{title}\n{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)" if title else \
-            f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+        full_title = (
+            f"{title}\n{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+            if title
+            else f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+        )
 
         x, y = self.components[:, 0], self.components[:, 1]
         plt.figure(figsize=figsize)
@@ -170,8 +205,13 @@ class Visualization:
 
         for i, cluster in enumerate(unique_clusters):
             cluster_points = self.clusters == cluster
-            plt.scatter(x[cluster_points], y[cluster_points], label=f"Cluster {cluster}",
-                        alpha=0.7, color=color_map(i))
+            plt.scatter(
+                x[cluster_points],
+                y[cluster_points],
+                label=f"Cluster {cluster}",
+                alpha=0.7,
+                color=color_map(i),
+            )
 
         for i, label in enumerate(self.data.index):
             plt.text(x[i], y[i], label, fontsize=8, ha="right")
@@ -183,7 +223,13 @@ class Visualization:
         plt.ylabel("Component 2")
 
         if n_clusters > 30:
-            plt.legend(title="Clusters", loc="upper left", bbox_to_anchor=(1.05, 1), ncol=2, borderaxespad=0.)
+            plt.legend(
+                title="Clusters",
+                loc="upper left",
+                bbox_to_anchor=(1.05, 1),
+                ncol=2,
+                borderaxespad=0.0,
+            )
             plt.tight_layout(rect=(0, 0, 0.95, 1))
         else:
             plt.legend(title="Clusters", loc="best")
@@ -191,8 +237,14 @@ class Visualization:
 
         plt.show()
 
-    def plot_2d_scatter_with_clusters(self, x_col: str, y_col: str, cluster_col: str,
-                                      title: str = "", figsize: Tuple[int, int] = (10, 8)) -> None:
+    def plot_2d_scatter_with_clusters(
+        self,
+        x_col: str,
+        y_col: str,
+        cluster_col: str,
+        title: str = "",
+        figsize: Tuple[int, int] = (10, 8),
+    ) -> None:
         """
         Generates a 2D scatter plot colored by cluster using a wide color palette.
 
@@ -207,7 +259,9 @@ class Visualization:
         if title:
             full_title = f"{title}\n{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
         else:
-            full_title = f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+            full_title = (
+                f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+            )
 
         plt.figure(figsize=figsize)
         unique_clusters = np.unique(self.data[cluster_col])
@@ -223,7 +277,7 @@ class Visualization:
                 label=f"Cluster {cluster}",
                 s=20,
                 edgecolor="k",
-                color=color_map(i)  # 🟢 Color único por cluster
+                color=color_map(i),  # 🟢 Color único por cluster
             )
 
         plt.title(full_title)
@@ -232,8 +286,13 @@ class Visualization:
         plt.axis("equal")
 
         if n_clusters > 30:
-            plt.legend(title="Clusters", loc="upper left", bbox_to_anchor=(1.05, 1),
-                       ncol=2, borderaxespad=0.)
+            plt.legend(
+                title="Clusters",
+                loc="upper left",
+                bbox_to_anchor=(1.05, 1),
+                ncol=2,
+                borderaxespad=0.0,
+            )
             plt.tight_layout(rect=(0, 0, 0.95, 1))
         else:
             plt.legend(title="Clusters", loc="best")
@@ -241,8 +300,17 @@ class Visualization:
 
         plt.show()
 
-    def plot_3d_scatter_with_clusters(self, x_col: str, y_col: str, z_col: str, cluster_col: str,
-                                      title: str = "", figsize: Tuple[int, int] = (12, 8), s: int = 50, alpha: float = 0.7) -> None:
+    def plot_3d_scatter_with_clusters(
+        self,
+        x_col: str,
+        y_col: str,
+        z_col: str,
+        cluster_col: str,
+        title: str = "",
+        figsize: Tuple[int, int] = (12, 8),
+        s: int = 50,
+        alpha: float = 0.7,
+    ) -> None:
         """
         Creates a 3D scatter plot colored by cluster using a wide colormap for better differentiation.
 
@@ -260,7 +328,9 @@ class Visualization:
         if title:
             full_title = f"{title}\n{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
         else:
-            full_title = f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+            full_title = (
+                f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+            )
 
         cluster_codes, unique_clusters = pd.factorize(self.data[cluster_col])
         n_clusters = len(unique_clusters)
@@ -279,7 +349,7 @@ class Visualization:
                 color=color_map(i),
                 label=f"Cluster {cluster_name}",
                 s=s,
-                alpha=alpha
+                alpha=alpha,
             )
 
         ax.set_title(full_title)
@@ -288,7 +358,13 @@ class Visualization:
         ax.set_zlabel(z_col)
 
         if n_clusters > 30:
-            ax.legend(title="Clusters", loc="upper left", bbox_to_anchor=(1.05, 1), ncol=2, borderaxespad=0.)
+            ax.legend(
+                title="Clusters",
+                loc="upper left",
+                bbox_to_anchor=(1.05, 1),
+                ncol=2,
+                borderaxespad=0.0,
+            )
             plt.tight_layout(rect=(0, 0, 0.95, 1))
         else:
             ax.legend(title="Clusters", loc="best")
