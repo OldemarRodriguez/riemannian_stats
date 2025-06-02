@@ -22,12 +22,16 @@ class Visualization:
         explained_inertia (float): Read-only access to the explained inertia percentage.
         clusters (np.ndarray or None): Read-only access to cluster labels.
 
-    Methods:
-        plot_principal_plane(title=""): 2D projection of the components with point labels.
-        plot_principal_plane_with_clusters(title=""): Same as above, but colored by clusters.
-        plot_correlation_circle(correlations, title="", scale=1, draw_circle=True): Visualizes correlation of variables.
-        plot_2d_scatter_with_clusters(x_col, y_col, cluster_col, title="", figsize=(10, 8)): 2D scatter plot by cluster.
-        plot_3d_scatter_with_clusters(x_col, y_col, z_col, cluster_col, title="", ...): 3D scatter plot by cluster.
+       Methods:
+        __get_adaptive_colormap(n_clusters): Returns a suitable colormap based on number of clusters.
+        plot_principal_plane(title="", figsize=(10, 8)): 2D projection of the components without clusters.
+        plot_principal_plane_with_clusters(title="", figsize=(10, 8)): 2D projection of the components colored by clusters.
+        plot_correlation_circle(correlations, title="", scale=1, draw_circle=True, figsize=(8, 8)):
+            Visualizes correlation of variables with the principal components.
+        plot_2d_scatter_with_clusters(x_col, y_col, cluster_col, title="", figsize=(10, 8)):
+            2D scatter plot of selected features colored by clusters.
+        plot_3d_scatter_with_clusters(x_col, y_col, z_col, cluster_col, title="", figsize=(12, 8), s=50, alpha=0.7):
+            3D scatter plot of selected features colored by clusters.
     """
 
     def __init__(self, data: pd.DataFrame, components: Optional[np.ndarray] = None,
@@ -71,6 +75,16 @@ class Visualization:
     def clusters(self) -> Optional[np.ndarray]:
         """Returns the cluster labels for each data point."""
         return self._clusters
+
+    def _get_adaptive_colormap(self, n_clusters: int):
+        if n_clusters <= 10:
+            return plt.cm.get_cmap("Set1", n_clusters)
+        elif n_clusters <= 20:
+            return plt.cm.get_cmap("tab10", n_clusters)
+        elif n_clusters <= 40:
+            return plt.cm.get_cmap("tab20", n_clusters)
+        else:
+            return plt.cm.get_cmap("nipy_spectral", n_clusters)
 
     def plot_principal_plane(self, title: str = "", figsize: Tuple[int, int] = (10, 8)) -> None:
         """
@@ -130,9 +144,8 @@ class Visualization:
         plt.title(full_title)
         plt.tight_layout()
         plt.show()
-# ----------------------------------
-    def plot_principal_plane_with_clusters(self, title: str = "", figsize: Tuple[int, int] = (10, 8),
-                                           cmap: str = "tab20") -> None:
+
+    def plot_principal_plane_with_clusters(self, title: str = "", figsize: Tuple[int, int] = (10, 8)) -> None:
         """
         Generates a plot of the principal plane with points colored according to clusters,
         using a color map that supports many distinct clusters.
@@ -140,8 +153,6 @@ class Visualization:
         Parameters:
             title (str, optional): Custom title to add above the default title.
             figsize (tuple, optional): Figure size. Defaults to (10, 8).
-            cmap (str, optional): Colormap to use. Defaults to "tab20".
-ñ
         """
         if self.clusters is None:
             raise ValueError("Cluster information is required for this plot.")
@@ -155,8 +166,7 @@ class Visualization:
         unique_clusters = np.unique(self.clusters)
         n_clusters = len(unique_clusters)
 
-        # 🎨 Color map adaptado a la cantidad de clusters
-        color_map = plt.cm.get_cmap(cmap, n_clusters)
+        color_map = self._get_adaptive_colormap(n_clusters)
 
         for i, cluster in enumerate(unique_clusters):
             cluster_points = self.clusters == cluster
@@ -174,7 +184,7 @@ class Visualization:
 
         if n_clusters > 30:
             plt.legend(title="Clusters", loc="upper left", bbox_to_anchor=(1.05, 1), ncol=2, borderaxespad=0.)
-            plt.tight_layout(rect=(0, 0, 0.85, 1))
+            plt.tight_layout(rect=(0, 0, 0.95, 1))
         else:
             plt.legend(title="Clusters", loc="best")
             plt.tight_layout()
@@ -182,8 +192,7 @@ class Visualization:
         plt.show()
 
     def plot_2d_scatter_with_clusters(self, x_col: str, y_col: str, cluster_col: str,
-                                      title: str = "", figsize: Tuple[int, int] = (10, 8),
-                                      cmap: str = "tab20") -> None:
+                                      title: str = "", figsize: Tuple[int, int] = (10, 8)) -> None:
         """
         Generates a 2D scatter plot colored by cluster using a wide color palette.
 
@@ -193,7 +202,6 @@ class Visualization:
             cluster_col (str): Name of the column containing cluster labels.
             title (str, optional): Custom title to add above the default title.
             figsize (tuple, optional): Figure size. Defaults to (10, 8).
-            cmap (str, optional): Colormap to use. Defaults to "tab20".
         """
         default_title = "2D Cluster Projection – Visualization of Groupings"
         if title:
@@ -205,7 +213,7 @@ class Visualization:
         unique_clusters = np.unique(self.data[cluster_col])
         n_clusters = len(unique_clusters)
 
-        color_map = plt.cm.get_cmap(cmap, n_clusters)
+        color_map = self._get_adaptive_colormap(n_clusters)
 
         for i, cluster in enumerate(unique_clusters):
             subset = self.data[self.data[cluster_col] == cluster]
@@ -226,7 +234,7 @@ class Visualization:
         if n_clusters > 30:
             plt.legend(title="Clusters", loc="upper left", bbox_to_anchor=(1.05, 1),
                        ncol=2, borderaxespad=0.)
-            plt.tight_layout(rect=(0, 0, 0.85, 1))
+            plt.tight_layout(rect=(0, 0, 0.95, 1))
         else:
             plt.legend(title="Clusters", loc="best")
             plt.tight_layout()
@@ -234,8 +242,7 @@ class Visualization:
         plt.show()
 
     def plot_3d_scatter_with_clusters(self, x_col: str, y_col: str, z_col: str, cluster_col: str,
-                                      title: str = "", figsize: Tuple[int, int] = (12, 8),
-                                      cmap: str = "tab20", s: int = 50, alpha: float = 0.7) -> None:
+                                      title: str = "", figsize: Tuple[int, int] = (12, 8), s: int = 50, alpha: float = 0.7) -> None:
         """
         Creates a 3D scatter plot colored by cluster using a wide colormap for better differentiation.
 
@@ -246,7 +253,6 @@ class Visualization:
             cluster_col (str): Name of the column containing cluster labels.
             title (str, optional): Custom title to add above the default title.
             figsize (tuple, optional): Figure size. Defaults to (12, 8).
-            cmap (str, optional): Colormap to use. Defaults to "tab20".
             s (int, optional): Size of the points. Defaults to 50.
             alpha (float, optional): Transparency of the points. Defaults to 0.7.
         """
@@ -259,13 +265,11 @@ class Visualization:
         cluster_codes, unique_clusters = pd.factorize(self.data[cluster_col])
         n_clusters = len(unique_clusters)
 
-        # 🌈 Usar colormap amplio
-        color_map = plt.cm.get_cmap(cmap, n_clusters)
+        color_map = self._get_adaptive_colormap(n_clusters)
 
         fig = plt.figure(figsize=figsize)
         ax = fig.add_subplot(111, projection="3d")
 
-        # 🎯 Graficar cada cluster con un color único
         for i, cluster_name in enumerate(unique_clusters):
             cluster_points = cluster_codes == i
             ax.scatter(
@@ -283,10 +287,9 @@ class Visualization:
         ax.set_ylabel(y_col)
         ax.set_zlabel(z_col)
 
-        # 📐 Leyenda adaptativa
         if n_clusters > 30:
             ax.legend(title="Clusters", loc="upper left", bbox_to_anchor=(1.05, 1), ncol=2, borderaxespad=0.)
-            plt.tight_layout(rect=(0, 0, 0.85, 1))
+            plt.tight_layout(rect=(0, 0, 0.95, 1))
         else:
             ax.legend(title="Clusters", loc="best")
             plt.tight_layout()

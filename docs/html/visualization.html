@@ -363,36 +363,22 @@
 <dd class="field-odd"><p>np.ndarray or None</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="riemannian_stats.visualization.Visualization.plot_principal_plane">
-<span class="sig-name descname"><span class="pre">plot_principal_plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riemannian_stats.visualization.Visualization.plot_principal_plane" title="Link to this definition">¶</a></dt>
-<dd><p>2D projection of the components with point labels.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="riemannian_stats.visualization.Visualization.plot_principal_plane_with_clusters">
-<span class="sig-name descname"><span class="pre">plot_principal_plane_with_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riemannian_stats.visualization.Visualization.plot_principal_plane_with_clusters" title="Link to this definition">¶</a></dt>
-<dd><p>Same as above, but colored by clusters.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="riemannian_stats.visualization.Visualization.plot_correlation_circle">
-<span class="sig-name descname"><span class="pre">plot_correlation_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_circle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riemannian_stats.visualization.Visualization.plot_correlation_circle" title="Link to this definition">¶</a></dt>
-<dd><p>Visualizes correlation of variables.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="riemannian_stats.visualization.Visualization.plot_2d_scatter_with_clusters">
-<span class="sig-name descname"><span class="pre">plot_2d_scatter_with_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">8)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riemannian_stats.visualization.Visualization.plot_2d_scatter_with_clusters" title="Link to this definition">¶</a></dt>
-<dd><p>2D scatter plot by cluster.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="riemannian_stats.visualization.Visualization.plot_3d_scatter_with_clusters">
-<span class="sig-name descname"><span class="pre">plot_3d_scatter_with_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title=&quot;&quot;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">...</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riemannian_stats.visualization.Visualization.plot_3d_scatter_with_clusters" title="Link to this definition">¶</a></dt>
-<dd><p>3D scatter plot by cluster.</p>
+<dl>
+<dt>Methods:</dt><dd><p>__get_adaptive_colormap(n_clusters): Returns a suitable colormap based on number of clusters.
+plot_principal_plane(title=””, figsize=(10, 8)): 2D projection of the components without clusters.
+plot_principal_plane_with_clusters(title=””, figsize=(10, 8)): 2D projection of the components colored by clusters.
+plot_correlation_circle(correlations, title=””, scale=1, draw_circle=True, figsize=(8, 8)):</p>
+<blockquote>
+<div><p>Visualizes correlation of variables with the principal components.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>plot_2d_scatter_with_clusters(x_col, y_col, cluster_col, title=””, figsize=(10, 8)):</dt><dd><p>2D scatter plot of selected features colored by clusters.</p>
+</dd>
+<dt>plot_3d_scatter_with_clusters(x_col, y_col, z_col, cluster_col, title=””, figsize=(12, 8), s=50, alpha=0.7):</dt><dd><p>3D scatter plot of selected features colored by clusters.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
@@ -420,9 +406,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id4">
-<span class="sig-name descname"><span class="pre">plot_2d_scatter_with_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(10,</span> <span class="pre">8)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
-<dd><p>Generates a 2D scatter plot colored by cluster.</p>
+<dt class="sig sig-object py" id="riemannian_stats.visualization.Visualization.plot_2d_scatter_with_clusters">
+<span class="sig-name descname"><span class="pre">plot_2d_scatter_with_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(10,</span> <span class="pre">8)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#riemannian_stats.visualization.Visualization.plot_2d_scatter_with_clusters" title="Link to this definition">¶</a></dt>
+<dd><p>Generates a 2D scatter plot colored by cluster using a wide color palette.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -437,9 +423,9 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id5">
-<span class="sig-name descname"><span class="pre">plot_3d_scatter_with_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(12,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.7</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
-<dd><p>Creates a 3D scatter plot colored by cluster.</p>
+<dt class="sig sig-object py" id="riemannian_stats.visualization.Visualization.plot_3d_scatter_with_clusters">
+<span class="sig-name descname"><span class="pre">plot_3d_scatter_with_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(12,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.7</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#riemannian_stats.visualization.Visualization.plot_3d_scatter_with_clusters" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a 3D scatter plot colored by cluster using a wide colormap for better differentiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -449,7 +435,6 @@
 <li><p><strong>cluster_col</strong> (<em>str</em>) – Name of the column containing cluster labels.</p></li>
 <li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom title to add above the default title.</p></li>
 <li><p><strong>figsize</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Figure size. Defaults to (12, 8).</p></li>
-<li><p><strong>cmap</strong> (<em>str</em><em>, </em><em>optional</em>) – Colormap to use. Defaults to “viridis”.</p></li>
 <li><p><strong>s</strong> (<em>int</em><em>, </em><em>optional</em>) – Size of the points. Defaults to 50.</p></li>
 <li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – Transparency of the points. Defaults to 0.7.</p></li>
 </ul>
@@ -458,8 +443,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id6">
-<span class="sig-name descname"><span class="pre">plot_correlation_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_circle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id6" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="riemannian_stats.visualization.Visualization.plot_correlation_circle">
+<span class="sig-name descname"><span class="pre">plot_correlation_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_circle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(8,</span> <span class="pre">8)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#riemannian_stats.visualization.Visualization.plot_correlation_circle" title="Link to this definition">¶</a></dt>
 <dd><p>Generates a correlation circle for the principal components.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -468,32 +453,37 @@
 <li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom title to add above the default title.</p></li>
 <li><p><strong>scale</strong> (<em>float</em><em>, </em><em>optional</em>) – Scaling factor for the arrows. Defaults to 1.</p></li>
 <li><p><strong>draw_circle</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to draw the unit circle. Defaults to True.</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Figure size. Defaults to (8, 8).</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id7">
-<span class="sig-name descname"><span class="pre">plot_principal_plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id7" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="riemannian_stats.visualization.Visualization.plot_principal_plane">
+<span class="sig-name descname"><span class="pre">plot_principal_plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(10,</span> <span class="pre">8)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#riemannian_stats.visualization.Visualization.plot_principal_plane" title="Link to this definition">¶</a></dt>
 <dd><p>Generates a plot of the principal plane using the principal components.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom title to add above the default title.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom title to add above the default title.</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Figure size. Defaults to (10, 8).</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="id8">
-<span class="sig-name descname"><span class="pre">plot_principal_plane_with_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id8" title="Link to this definition">¶</a></dt>
-<dd><p>Generates a plot of the principal plane with points colored according to clusters.</p>
+<dt class="sig sig-object py" id="riemannian_stats.visualization.Visualization.plot_principal_plane_with_clusters">
+<span class="sig-name descname"><span class="pre">plot_principal_plane_with_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(10,</span> <span class="pre">8)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#riemannian_stats.visualization.Visualization.plot_principal_plane_with_clusters" title="Link to this definition">¶</a></dt>
+<dd><p>Generates a plot of the principal plane with points colored according to clusters,
+using a color map that supports many distinct clusters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom title to add above the default title.</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If cluster information is not provided.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom title to add above the default title.</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Figure size. Defaults to (10, 8).</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -569,20 +559,15 @@
 <li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.components"><code class="docutils literal notranslate"><span class="pre">Visualization.components</span></code></a></li>
 <li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.explained_inertia"><code class="docutils literal notranslate"><span class="pre">Visualization.explained_inertia</span></code></a></li>
 <li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.clusters"><code class="docutils literal notranslate"><span class="pre">Visualization.clusters</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.plot_principal_plane"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_principal_plane()</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.plot_principal_plane_with_clusters"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_principal_plane_with_clusters()</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.plot_correlation_circle"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_correlation_circle()</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.plot_2d_scatter_with_clusters"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_2d_scatter_with_clusters()</span></code></a></li>
-<li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.plot_3d_scatter_with_clusters"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_3d_scatter_with_clusters()</span></code></a></li>
 <li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Visualization.clusters</span></code></a></li>
 <li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Visualization.components</span></code></a></li>
 <li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Visualization.data</span></code></a></li>
 <li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Visualization.explained_inertia</span></code></a></li>
-<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_2d_scatter_with_clusters()</span></code></a></li>
-<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_3d_scatter_with_clusters()</span></code></a></li>
-<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_correlation_circle()</span></code></a></li>
-<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_principal_plane()</span></code></a></li>
-<li><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_principal_plane_with_clusters()</span></code></a></li>
+<li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.plot_2d_scatter_with_clusters"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_2d_scatter_with_clusters()</span></code></a></li>
+<li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.plot_3d_scatter_with_clusters"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_3d_scatter_with_clusters()</span></code></a></li>
+<li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.plot_correlation_circle"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_correlation_circle()</span></code></a></li>
+<li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.plot_principal_plane"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_principal_plane()</span></code></a></li>
+<li><a class="reference internal" href="#riemannian_stats.visualization.Visualization.plot_principal_plane_with_clusters"><code class="docutils literal notranslate"><span class="pre">Visualization.plot_principal_plane_with_clusters()</span></code></a></li>
 </ul>
 </li>
 </ul>
