@@ -10,7 +10,7 @@ authors = [
     { name = "Oldemar Rodríguez Rojas", email = "oldemar.rodriguez@ucr.ac.cr" },
     { name = "Jennifer Lobo Vásquez", email = "jennifer.lobo.vasquez@gmail.com" }
 ]
-license = {text = "BSD-3-Clause"}
+
 readme = "README.md"
 requires-python = ">=3.8"
 
@@ -22,11 +22,21 @@ dependencies = [
     "umap-learn>=0.5.7,<0.6",
 ]
 
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+]
+
 [project.optional-dependencies]
 plot = [
     "matplotlib>=3.7.5,<3.11",
     "pandas>=2.0.3,<2.3"
 ]
+
+[project.urls]
+Homepage = "https://github.com/OldemarRodriguez/riemannian_stats"
+Repository = "https://github.com/OldemarRodriguez/riemannian_stats.git"
 
 [tool.black]
 line-length = 88
@@ -42,7 +52,3 @@ exclude = '''
   | .*\.egg-info
 )/
 '''
-
-[project.urls]
-Homepage = "https://github.com/OldemarRodriguez/riemannian_stats"
-Repository = "https://github.com/OldemarRodriguez/riemannian_stats.git"
