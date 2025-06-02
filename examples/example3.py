@@ -37,6 +37,8 @@ from sklearn.datasets import fetch_olivetti_faces
 faces = fetch_olivetti_faces(shuffle=True, random_state=42)
 data = pd.DataFrame(faces.data)
 clusters = pd.Series(faces.target)
+
+# Define number of neighbors
 n_neighbors = int(len(data) / 40)
 
 # ---------------------------
@@ -81,12 +83,7 @@ print("Variable-Component Correlations:", correlations)
 # ---------------------------
 # Visualization
 # ---------------------------
-# Add components and cluster for 2D/3D plotting
 data_with_clusters = data.copy()
-data_with_clusters['x'] = riemann_components[:, 0]
-data_with_clusters['y'] = riemann_components[:, 1]
-data_with_clusters['var1'] = riemann_components[:, 2] if riemann_components.shape[1] > 2 else 0
-data_with_clusters['cluster'] = clusters
 
 viz = visualization(data=data_with_clusters,
                     components=riemann_components,
@@ -94,12 +91,12 @@ viz = visualization(data=data_with_clusters,
                     clusters=clusters)
 
 try:
-    viz.plot_2d_scatter_with_clusters(x_col="x", y_col="y", cluster_col="cluster", title="Olivetti Faces")
+    viz.plot_2d_scatter_with_clusters(x_col="x", y_col="y", cluster_col="cluster", title="Olivetti Faces", figsize=(12, 8))
 except Exception as e:
     print("2D Scatter Plot Failed:", e)
 
 try:
-    viz.plot_principal_plane_with_clusters(title="Olivetti Faces")
+    viz.plot_principal_plane_with_clusters(title="Olivetti Faces", figsize=(12, 8))
 except Exception as e:
     print("Principal Plane Plot Failed:", e)
 
