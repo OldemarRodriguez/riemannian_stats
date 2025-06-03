@@ -80,10 +80,10 @@ Requirements
 
 Make sure you have the necessary dependencies listed in the `requirements.txt` file. The core dependencies include:
 
-- **matplotlib** (>=3.9.2,<3.11)
-- **pandas** (>=2.2.2,<2.3)
-- **numpy** (>=1.26.4,<2.0)
-- **scikit-learn** (>=1.5.1,<1.7)
+- **matplotlib** (>=3.7.5,<3.11)
+- **pandas** (>=2.0.3,<2.3)
+- **numpy** (1.24.4,<3.0)
+- **scikit-learn** (1.3.2,<1.7)
 - **umap-learn** (>=0.5.7,<0.6)
 
 These dependencies are automatically installed with `pip install`, but you can also install them manually:

@@ -14,6 +14,7 @@ authors = [
 
 readme = "README.md"
 requires-python = ">=3.8"
+license = {file = "LICESE.txt"}
 
 dependencies = [
     "matplotlib>=3.7.5,<3.11",
@@ -23,7 +24,6 @@ dependencies = [
     "umap-learn>=0.5.7,<0.6",
 ]
 
-license = {file = "LICESE.txt"}
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: BSD License",

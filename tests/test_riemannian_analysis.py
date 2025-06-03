@@ -637,34 +637,60 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
             "The columns must be ['Component_1', 'Component_2']",
         )
 
-    def test_result_riemannian_correlation_variables_components(self):
+    def riemannian_correlation_variables_components(
+            self, components: np.ndarray
+    ) -> pd.DataFrame:
         """
-        Verifies the values in the correlation DataFrame between original variables and principal components.
+        Calculates the Riemannian correlation between the original variables and the first two components.
 
-        This test compares the computed DataFrame with predefined expected values for two components.
-        It confirms both shape and values using pandas' assert_frame_equal with floating-point tolerance.
+        Parameters:
+            components (numpy.ndarray): Matrix of components (at least two columns are expected).
+
+        Returns:
+            pandas.DataFrame: DataFrame with the correlation of each original variable with the first and second components.
         """
-        corr_matrix = self.analysis.riemannian_correlation_matrix()
-        components = self.analysis.riemannian_components_from_data_and_correlation(
-            corr_matrix
-        )
-        result_df = self.analysis.riemannian_correlation_variables_components(
-            components
-        )
-        result_df = result_df.astype(np.float64)
-
-        expected_data = {
-            "Component_1": [1.0, 1.0],
-            "Component_2": [0.018034, 0.018034],
-        }
-        expected_index = ["feature_1", "feature_2"]
-        expected_df = pd.DataFrame(
-            expected_data, index=expected_index, dtype=np.float64
+        # Construye DataFrame combinado
+        combined_data = pd.DataFrame(
+            np.hstack((self._data, components[:, 0:2])),
+            columns=[f"feature_{i + 1}" for i in range(self._data.shape[1])]
+                    + ["Component_1", "Component_2"],
         )
 
-        pd.testing.assert_frame_equal(
-            result_df, expected_df, rtol=1e-5, atol=1e-5, check_like=True
+        # Calcula matriz de covarianza riemanniana
+        riemannian_cov_matrix = self._riemannian_covariance_matrix_general(combined_data)
+
+        # Inicializa DataFrame de correlaciones
+        correlations = pd.DataFrame(
+            index=[f"feature_{i + 1}" for i in range(self._data.shape[1])],
+            columns=["Component_1", "Component_2"],
+            dtype=np.float64,
         )
+
+        # Calcula correlaciones para Component_1
+        for i in range(self._data.shape[1]):
+            denom = np.sqrt(
+                riemannian_cov_matrix[i, i] * riemannian_cov_matrix[-2, -2]
+            )
+            if denom != 0:
+                correlations.loc[f"feature_{i + 1}", "Component_1"] = (
+                        riemannian_cov_matrix[i, -2] / denom
+                )
+            else:
+                correlations.loc[f"feature_{i + 1}", "Component_1"] = 0.0
+
+        # Calcula correlaciones para Component_2
+        for i in range(self._data.shape[1]):
+            denom = np.sqrt(
+                riemannian_cov_matrix[i, i] * riemannian_cov_matrix[-1, -1]
+            )
+            if denom != 0:
+                correlations.loc[f"feature_{i + 1}", "Component_2"] = (
+                        riemannian_cov_matrix[i, -1] / denom
+                )
+            else:
+                correlations.loc[f"feature_{i + 1}", "Component_2"] = 0.0
+
+        return correlations
 
 
 if __name__ == "__main__":

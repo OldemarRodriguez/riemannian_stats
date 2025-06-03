@@ -186,13 +186,14 @@ This example demonstrates the analysis of a high-dimensional dataset (`Data10D_2
 #### Riemannian Analysis:
   An instance of `RiemannianAnalysis` is created with a neighbor count calculated as the dataset length divided by 5. The analysis includes:
 
-  * UMAP graph similarities.
-  * Computation of the rho matrix.
-  * Calculation of Riemannian vector differences.
-  * Generation of the UMAP distance matrix.
-  * Derivation of Riemannian covariance and correlation matrices.
-  * Extraction of principal components from the correlation matrix.
-  * Calculation of explained inertia using the first two principal components.
+* Calculation of **UMAP graph similarities**.
+* Derivation of the **rho matrix**.
+* Computation of **Riemannian vector differences**.
+* Generation of the **UMAP distance matrix**.
+* Computation of **Riemannian covariance and correlation matrices**.
+* Extraction of **principal components**.
+* Determination of **explained inertia** (as a percentage) using the first two components.
+* Evaluation of **correlations** between the original variables and principal components.
 
 #### Visualization:
   Depending on the presence of clustering data, the example produces:
@@ -245,6 +246,7 @@ Visualizations are created using the provided cluster labels (individual identit
 This example demonstrates how `riemannian_stats` can be extended beyond classical tabular datasets to handle complex **image data**, offering both analytical depth and intuitive visual interpretation.
 
 *For full details, see [example3.py](./examples/example3.py)*
+
 ---
 
 ## 🔍 Testing
