@@ -71,11 +71,12 @@ riemannian_stats/
 │       └── iris.cvs
 │   ├── example1.py
 │   └── example2.py
+│   └── example3.py
 │
 ├── requirements.txt                     # Dependencies 
 ├── pyproject.toml                       # Package installation script
 ├── README.md                            # General information and usage of the package
-└── LICENSE                              # BSD-3-Clause License
+└── LICENSE.txt                          # BSD-3-Clause License
 
 ```
 
@@ -83,7 +84,7 @@ riemannian_stats/
 
 ## 🚀 Installation
 
-Ensure you have [Python ≥ 3.6](https://www.python.org/downloads/) installed, then run:
+Ensure you have [Python ≥ 3.8](https://www.python.org/downloads/) installed, then run:
 
 ```bash
 pip install riemannian_stats
@@ -92,7 +93,7 @@ pip install riemannian_stats
 Alternatively, to install from the source code, clone the repository and execute:
 
 ```bash
-git clone https://github.com/JenniLoboV/riemannian_stats.git
+git clone https://github.com/OldemarRodriguez/riemannian_stats.git
 cd riemannian_stats
 pip install .
 ```
@@ -101,14 +102,13 @@ This project follows PEP 621 and uses pyproject.toml as the primary configuratio
 
 **Main Dependencies:**
 
-- **matplotlib** (>=3.9.2,<3.11)
-- **pandas** (>=2.2.2,<2.3)
-- **numpy** (>=1.26.4,<2.0)
-- **scikit-learn** (>=1.5.1,<1.7)
-- **umap-learn** (>=0.5.7,<0.6)
+* **matplotlib** (>=3.7.5, <3.11)
+* **pandas** (>=2.0.3, <2.3)
+* **numpy** (>=1.24.4, <3.0)
+* **scikit-learn** (>=1.3.2, <1.7)
+* **umap-learn** (>=0.5.7, <0.6)
 
 These dependencies are defined in the [pyproject.toml](./pyproject.toml) and in [requirements.txt](./requirements.txt) .
-
 
 ---
 
@@ -144,28 +144,33 @@ The `examples/` directory contains two comprehensive examples demonstrating how 
 --- 
 ### Example 1: Iris Dataset
 
-Using the classic Iris dataset (`iris.csv`), this example illustrates the package's capabilities on a well-known, lower-dimensional dataset:
+This example illustrates the capabilities of the `riemannian_stats` package using the classic, lower-dimensional **Iris dataset** (`iris.csv`). The analysis follows this workflow:
 
-- **Data Loading and Preprocessing:**  
-  The Iris dataset is imported using `DataProcessing.load_data()`, with a semicolon as the separator and a dot as the decimal. It checks for a `tipo` column to extract clustering information, which is then separated from the analysis data.
+#### Data Loading and Preprocessing
 
-- **Riemannian Analysis:**  
-  An instance of `RiemannianAnalysis` is initialized with the dataset and a neighbor count determined as the data length divided by 3. The analysis process includes:
-  - Calculation of UMAP graph similarities.
-  - Derivation of the rho matrix.
-  - Computation of Riemannian vector differences.
-  - Generation of the UMAP distance matrix.
-  - Calculation of Riemannian covariance and correlation matrices.
-  - Extraction of principal components.
-  - Determination of explained inertia (as a percentage) using the first two components.
-  - Evaluation of correlations between the original variables and principal components.
+The dataset is imported using `pandas.read_csv()` with a **semicolon (`;`)** as the separator and a **dot (`.`)** as the decimal mark. Alternatively, you could use `DataProcessing.load_data()` if preferred. The script checks for a `species` column to extract clustering information, separating it from the analysis data but keeping it for visualizations.
 
-- **Visualization:**  
-  When clustering data is available, the example generates:
-  - A **2D scatter plot** with clusters (using dimensions such as `s.largo` and `s.ancho`).
-  - A **Principal plane plot** with clusters.
-  - A **3D scatter plot** with clusters (adding a third dimension with `p.largo`).
-  - A **Correlation circle plot** that is produced in all cases.
+#### Riemannian Analysis
+
+An instance of `RiemannianAnalysis` is initialized with a neighbor count equal to the data length divided by 3. The analysis process includes:
+
+* Calculation of **UMAP graph similarities**.
+* Derivation of the **rho matrix**.
+* Computation of **Riemannian vector differences**.
+* Generation of the **UMAP distance matrix**.
+* Computation of **Riemannian covariance and correlation matrices**.
+* Extraction of **principal components**.
+* Determination of **explained inertia** (as a percentage) using the first two components.
+* Evaluation of **correlations** between the original variables and principal components.
+
+#### Visualization
+
+When clustering data is available, the example generates:
+
+* A **2D scatter plot** with clusters (using dimensions like `sepal.length` and `sepal.width`).
+* A **Principal plane plot** with clusters.
+* A **3D scatter plot** with clusters (adding a third dimension with `petal.length`).
+* A **Correlation circle plot** (produced in all cases, with or without clusters).
 
 *For full details, see [example1.py](./examples/example1.py)*
 
@@ -175,30 +180,72 @@ Using the classic Iris dataset (`iris.csv`), this example illustrates the packag
 
 This example demonstrates the analysis of a high-dimensional dataset (`Data10D_250.csv`). The workflow includes:
 
-- **Data Loading and Preprocessing:**  
-  The dataset is loaded with `DataProcessing.load_data()`, using a comma as the separator and a dot for decimals. If a `cluster` column exists, clustering information is separated from the main analysis data, while retaining a copy for visualization.
+#### Data Loading and Preprocessing:
+  The dataset is loaded using `pandas.read_csv()` with a comma as the separator and a dot for decimals. Optionally, the user could use `DataProcessing.load_data()` if working within a custom preprocessing pipeline. If a `cluster` column exists, clustering information is separated from the main analysis data, while retaining a copy for visualization.
 
-- **Riemannian Analysis:**  
+#### Riemannian Analysis:
   An instance of `RiemannianAnalysis` is created with a neighbor count calculated as the dataset length divided by 5. The analysis includes:
-  - UMAP graph similarities.
-  - Computation of the rho matrix.
-  - Calculation of Riemannian vector differences.
-  - Generation of the UMAP distance matrix.
-  - Derivation of Riemannian covariance and correlation matrices.
-  - Extraction of principal components from the correlation matrix.
-  - Calculation of explained inertia using the first two principal components.
 
-- **Visualization:**  
+  * UMAP graph similarities.
+  * Computation of the rho matrix.
+  * Calculation of Riemannian vector differences.
+  * Generation of the UMAP distance matrix.
+  * Derivation of Riemannian covariance and correlation matrices.
+  * Extraction of principal components from the correlation matrix.
+  * Calculation of explained inertia using the first two principal components.
+
+#### Visualization:
   Depending on the presence of clustering data, the example produces:
-  - A **2D scatter plot** with clusters.
-  - A **Principal plane plot** showcasing principal components.
-  - A **3D scatter plot** with clusters.
-  - A **Correlation circle plot** to display correlations between original variables and principal components.
+
+  * A **2D scatter plot** with clusters.
+  * A **Principal plane plot** showcasing principal components.
+  * A **3D scatter plot** with clusters.
+  * A **Correlation circle plot** to display correlations between original variables and principal components.
 
 *For full details, see [example2.py](./examples/example2.py)*
 
 ---
 
+---
+### Example 3: Olivetti Faces Dataset
+
+This example showcases the use of the `riemannian_stats` package for analyzing a high-dimensional image dataset: the **Olivetti Faces** dataset from `sklearn`.
+
+#### Data Loading and Preprocessing
+
+The dataset is loaded using `fetch_olivetti_faces` and then converted into a `pandas.DataFrame`. Each sample is a flattened grayscale face image, and labels (from 0 to 39) indicate individual identities. These labels are treated as cluster identifiers for visualization.
+
+The number of neighbors for UMAP is calculated based on the number of samples per individual (typically 10), resulting in a value of `n_neighbors = len(data) / 40`.
+
+#### Riemannian Analysis
+
+An instance of `RiemannianAnalysis` is used to compute the following:
+
+* **UMAP similarity matrix**
+* **Rho matrix** (`1 - similarity`)
+* **Riemannian vector differences**
+* **UMAP distance matrix**
+* **Riemannian correlation matrix**
+
+From there, the script proceeds to:
+
+* Extract **principal components**
+* Calculate the **explained inertia** for the first two components
+* Evaluate **correlations** between original features and principal components
+
+#### Visualization
+
+Visualizations are created using the provided cluster labels (individual identities):
+
+* A **2D scatter plot** showing the distribution of individuals in the first two principal components
+* A **Principal plane plot** with clusters
+* A **3D scatter plot** (adds a third component when available)
+* A **Correlation circle plot** showing how original variables relate to the principal components
+
+This example demonstrates how `riemannian_stats` can be extended beyond classical tabular datasets to handle complex **image data**, offering both analytical depth and intuitive visual interpretation.
+
+*For full details, see [example3.py](./examples/example3.py)*
+---
 
 ## 🔍 Testing
 
@@ -221,7 +268,7 @@ This ensures that all functions and modules perform as expected throughout devel
 
 ## 📄 License
 
-Distributed under the BSD-3-Clause License. See the [LICENSE](./COPYING) for more details.
+Distributed under the BSD-3-Clause License. See the [LICENSE](./LICENSE.txt) for more details.
 
 ---
 
