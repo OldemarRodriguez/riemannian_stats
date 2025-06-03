@@ -37,7 +37,7 @@ plot = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/OldemarRodriguez/riemannian_stats"
+Homepage = "https://riemannianstats.web.app"
 Repository = "https://github.com/OldemarRodriguez/riemannian_stats.git"
 
 [tool.black]

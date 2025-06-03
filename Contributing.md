@@ -1,110 +1,125 @@
 
 ---
 
-# Contributing Guide
+#  Contributing Guide
+
+Thank you for your interest in contributing to **Riemannian STATS**! All contributions are welcome, code improvements, bug reports, documentation enhancements, or feature suggestions.
 
 ---
 
-Thank you for your interest in contributing to the **Riemannian STATS** project! Contributions of all types are welcome—code improvements, bug reports, documentation enhancements, and feature suggestions.
+## 🧩 How You Can Contribute
 
-## How to Contribute
+### 🐞 Reporting Issues
 
-### Reporting Issues
+One of the simplest and most valuable ways to help is reporting bugs or issues.
 
-Reporting issues or bugs is one of the simplest ways to help improve the project.
-
-- Check the [existing issues](https://github.com/OldemarRodriguez/riemannian_stats/issues) first to avoid duplication.
-- Clearly describe the issue and steps to reproduce it, if possible.
-- Include relevant details like Python version, operating system, and error messages.
+* Check the [existing issues](https://github.com/OldemarRodriguez/riemannian_stats/issues) to avoid duplicates.
+* Clearly describe the problem and how to reproduce it.
+* Include details like Python version, operating system, and any error messages.
 
 You can open a new issue [here](https://github.com/OldemarRodriguez/riemannian_stats/issues/new).
 
-### Contributing Documentation
+---
 
-Good documentation is vital. Improvements to clarity, completeness, or readability are especially helpful.
+### 📚 Improving Documentation
 
-To contribute documentation:
+Good documentation is crucial. If you spot anything unclear or outdated, feel free to contribute!
+
+#### Steps to contribute docs:
 
 1. Fork the repository.
-2. Make your changes to documentation files (located in the `/docs`).
-3. Submit a pull request (PR) clearly explaining your documentation improvements.
+2. Make changes to the documentation inside the `/docs` directory.
+3. Submit a pull request with a clear explanation of your improvements.
 
-#### Building Documentation Locally
+#### 🛠️ Build the documentation locally:
 
-To build documentation locally:
+You need **Sphinx** and the **Furo theme**:
 
-```shell
-pip install -r docs_requirements.txt
-sphinx-build -b html docs/ docs/html/
+```bash
+pip install sphinx furo
 ```
 
-You can view the built documentation by opening `docs/html/index.html` in a browser.
+Then build the docs:
 
-### Contributing Code
-
-Contributions in the form of code enhancements, bug fixes, and new features are encouraged!
-
-Follow these steps:
-
-1. **Fork** the repository to your GitHub account.
-2. **Clone** the repository locally:
-
-```shell
-git clone https://github.com/OldemarRodriguez/riemannian_stats.git
+```bash
+cd docs
+sphinx-build -b html source html
 ```
 
-3. **Create** a new branch for your changes:
+Open `docs/html/index.html` in a browser to view the result.
 
-```shell
-git checkout -b feature/my-new-feature
-```
+---
 
-4. Make your changes and commit them clearly.
+### 🧠 Contributing Code
 
-```shell
-git commit -am "Add my-new-feature"
-```
+Code contributions, bug fixes, new features, refactors, are very welcome.
 
-5. **Push** your changes back to GitHub:
+#### Workflow:
 
-```shell
-git push origin feature/my-new-feature
-```
+1. **Fork** the repository.
 
-6. Submit a pull request clearly explaining your changes.
+2. **Clone** it:
 
-### Code Formatting
+   ```bash
+   git clone https://github.com/OldemarRodriguez/riemannian_stats.git
+   ```
 
-To maintain consistency, please format your code using [Black](https://github.com/psf/black) before submitting your pull request:
+3. **Create a feature branch**:
 
-```shell
+   ```bash
+   git checkout -b feature/my-new-feature
+   ```
+
+4. Make your changes and commit:
+
+   ```bash
+   git commit -am "Add my-new-feature"
+   ```
+
+5. **Push to your fork**:
+
+   ```bash
+   git push origin feature/my-new-feature
+   ```
+
+6. Open a **pull request** with a clear summary of your changes.
+
+---
+
+## 🧼 Code Style & Testing
+
+### 🎨 Code Formatting
+
+Use [Black](https://github.com/psf/black) to keep code consistent:
+
+```bash
 pip install black
 black .
 ```
 
-### Running Tests
+### ✅ Run Tests
 
-Please ensure all existing unit tests pass and consider adding new tests for your changes:
+Please make sure all tests pass before submitting:
 
-```shell
+```bash
 python -m unittest discover tests
 ```
 
-or using `pytest`:
+Or if you prefer `pytest`:
 
-```shell
+```bash
 pytest tests
 ```
 
-## Pull Request Reviews
+---
 
-The maintainers will review your pull request and may suggest improvements. Communication and iteration are key—don’t hesitate to ask questions or discuss alternatives!
+## 🔍 Pull Request Reviews
 
-## Code of Conduct
+Maintainers will review your pull request and may suggest improvements. Don’t hesitate to ask questions, feedback is part of the process!
 
-We value a welcoming community and expect contributors to adhere to respectful and constructive communication. Please follow our [Code of Conduct](CODE_OF_CONDUCT.md).
+---
 
-## Questions?
+## ❓ Questions?
 
-Feel free to open an issue or contact the maintainers if you have any questions. Your contributions and feedback are greatly appreciated!
+Feel free to open an issue or reach out. We’re happy to help and grateful for your contribution!
 
