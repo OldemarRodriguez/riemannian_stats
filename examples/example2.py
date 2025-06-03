@@ -53,43 +53,43 @@ analysis = riemannian_analysis(data, n_neighbors=n_neighbors)
 # Compute UMAP graph similarities and the rho matrix for the data.
 # --------------------------------------------------------
 umap_similarities = analysis.umap_similarities
-print("calculate_umap_graph_similarities:", umap_similarities)
+print("UMAP Similarities Matrix:", umap_similarities)
 
 rho = analysis.rho
-print("calculate_rho_matrix:", rho)
+print("Rho Matrix:", rho)
 
 # --------------------------------------------------------
 # Compute Riemannian vector differences and the UMAP distance matrix.
 # --------------------------------------------------------
 riemannian_diff = analysis.riemannian_diff
-print("riemannian_vector_difference:", riemannian_diff)
+print("Riemannian Vector Differences:", riemannian_diff)
 
 umap_distance_matrix = analysis.umap_distance_matrix
-print("calculate_umap_distance_matrix:", umap_distance_matrix)
+print("UMAP Distance Matrix:", umap_distance_matrix)
 
 # --------------------------------------------------------
 # Compute the Riemannian correlation matrices, and extract principal components.
 # --------------------------------------------------------
 riemann_corr = analysis.riemannian_correlation_matrix()
-print("riemannian_correlation_matrix:", riemann_corr)
+print("Riemannian Correlation Matrix:", riemann_corr)
 
 riemann_components = analysis.riemannian_components_from_data_and_correlation(
     riemann_corr
 )
-print("riemannian_components_from_data_and_correlation:", riemann_components)
+print("Riemannian Components:", riemann_components)
 
 # --------------------------------------------------------
 # Compute the explained inertia (using components 0 and 1).
 # --------------------------------------------------------
 comp1, comp2 = 0, 1
 inertia = utilities.pca_inertia_by_components(riemann_corr, comp1, comp2) * 100
-print("pca_inertia_by_components:", inertia)
+print("Explained Inertia (%):", inertia)
 
 # --------------------------------------------------------
 # Compute correlations between original variables and the first two principal components.
 # --------------------------------------------------------
 correlations = analysis.riemannian_correlation_variables_components(riemann_components)
-print("riemannian_correlation_variables_components:", correlations)
+print("Variable-Component Correlations:", correlations)
 
 # --------------------------------------------------------
 # Visualization: Create plots based on the availability of clusters.

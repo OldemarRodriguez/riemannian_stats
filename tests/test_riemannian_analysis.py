@@ -638,7 +638,7 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         )
 
     def riemannian_correlation_variables_components(
-            self, components: np.ndarray
+        self, components: np.ndarray
     ) -> pd.DataFrame:
         """
         Calculates the Riemannian correlation between the original variables and the first two components.
@@ -653,11 +653,13 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
         combined_data = pd.DataFrame(
             np.hstack((self._data, components[:, 0:2])),
             columns=[f"feature_{i + 1}" for i in range(self._data.shape[1])]
-                    + ["Component_1", "Component_2"],
+            + ["Component_1", "Component_2"],
         )
 
         # Calcula matriz de covarianza riemanniana
-        riemannian_cov_matrix = self._riemannian_covariance_matrix_general(combined_data)
+        riemannian_cov_matrix = self._riemannian_covariance_matrix_general(
+            combined_data
+        )
 
         # Inicializa DataFrame de correlaciones
         correlations = pd.DataFrame(
@@ -668,24 +670,20 @@ class TestRiemannianUMAPAnalysis(unittest.TestCase):
 
         # Calcula correlaciones para Component_1
         for i in range(self._data.shape[1]):
-            denom = np.sqrt(
-                riemannian_cov_matrix[i, i] * riemannian_cov_matrix[-2, -2]
-            )
+            denom = np.sqrt(riemannian_cov_matrix[i, i] * riemannian_cov_matrix[-2, -2])
             if denom != 0:
                 correlations.loc[f"feature_{i + 1}", "Component_1"] = (
-                        riemannian_cov_matrix[i, -2] / denom
+                    riemannian_cov_matrix[i, -2] / denom
                 )
             else:
                 correlations.loc[f"feature_{i + 1}", "Component_1"] = 0.0
 
         # Calcula correlaciones para Component_2
         for i in range(self._data.shape[1]):
-            denom = np.sqrt(
-                riemannian_cov_matrix[i, i] * riemannian_cov_matrix[-1, -1]
-            )
+            denom = np.sqrt(riemannian_cov_matrix[i, i] * riemannian_cov_matrix[-1, -1])
             if denom != 0:
                 correlations.loc[f"feature_{i + 1}", "Component_2"] = (
-                        riemannian_cov_matrix[i, -1] / denom
+                    riemannian_cov_matrix[i, -1] / denom
                 )
             else:
                 correlations.loc[f"feature_{i + 1}", "Component_2"] = 0.0
