@@ -57,7 +57,7 @@ riemannian_stats/
 │   └── utilities.py                     # General utility functions
 │
 ├── tests/                               # Unit tests for each module
-│   ├── __init__.py
+│   ├── conftest.py
 │   ├── test_riemannian_analysis.py
 │   ├── test_visualization.py
 │   └── test_utilities.py
@@ -251,7 +251,11 @@ This example demonstrates how `riemannian_stats` can be extended beyond classica
 
 ## 🔍 Testing
 
-The package includes a suite of unit tests located in the `tests/` directory. To run the tests, ensure [pytest](https://pytest.org/) is installed and run:
+The package includes a suite of unit tests located in the `tests/` directory.
+
+To run the tests, make sure [pytest](https://pytest.org/) is installed and that you are in the **root directory** of the project (the one containing both the `riemannian_stats/` package and the `tests/` folder).
+
+Then run:
 
 ```bash
 pytest
