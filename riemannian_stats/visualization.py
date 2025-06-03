@@ -1,5 +1,10 @@
-from typing import Optional, Tuple, Union
+import os
+import matplotlib
+if any(env in os.environ for env in ["PYTEST_CURRENT_TEST", "CI"]):
+    matplotlib.use("Agg") # Use non-interactive backend in test or CI environments
 import matplotlib.pyplot as plt
+
+from typing import Optional, Tuple
 import numpy as np
 import pandas as pd
 
