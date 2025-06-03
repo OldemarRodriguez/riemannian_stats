@@ -1,0 +1,23 @@
+name: Firebase Deploy
+ 
+on:
+  push:
+    paths:
+     - 'docs/**'
+    branches:
+      - main
+ 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
+    - name: Change directory and deploy  
+      run: cd docs/ && firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
