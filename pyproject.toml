@@ -1,6 +1,7 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 
 [project]
 name = "riemannian_stats"
@@ -22,6 +23,7 @@ dependencies = [
     "umap-learn>=0.5.7,<0.6",
 ]
 
+license = {file = "COPYING"}
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: BSD License",

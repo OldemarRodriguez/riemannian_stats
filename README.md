@@ -221,7 +221,7 @@ This ensures that all functions and modules perform as expected throughout devel
 
 ## 📄 License
 
-Distributed under the BSD-3-Clause License. See the [LICENSE](./LICENSE.txt) for more details.
+Distributed under the BSD-3-Clause License. See the [LICENSE](./COPYING) for more details.
 
 ---
 
