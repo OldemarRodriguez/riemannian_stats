@@ -1,0 +1,120 @@
+/* Ocultar el botón de cambio de tema */
+.theme-toggle {
+    display: none !important;
+}
+
+/* Ocultar el enlace de "Ver código" */
+a.muted-link {
+    display: none !important;
+}
+
+
+/*Tipografía general*/
+body {
+    font-family: system-ui, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Enlaces */
+article a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/*Títulos */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+/*Bloques de código */
+code, pre {
+    font-family: 'Fira Code', Consolas, monospace;
+    font-size: 0.95em;
+    border-radius: 4px;
+    padding: 0.25em 0.5em;
+}
+
+pre {
+    overflow-x: auto;
+    padding: 1em;
+}
+
+/*Tablas (estructura, no colores)*/
+article th, article td {
+    padding: 0.5em;
+    border: 1px solid;
+}
+
+/*Admoniciones (estructura, no color)*/
+.admonition {
+    padding: 1em;
+    border-left: 4px solid;
+    border-radius: 4px;
+    color: inherit;
+}
+
+.admonition.note,
+.admonition.warning,
+.admonition.tip,
+.admonition.important {
+    margin-bottom: 1em;
+}
+
+/*Grid de tarjetas (estructura)*/
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+.card {
+    width: 110px;
+    height: 110px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.card img {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.card span {
+    font-size: 14px;
+}
+
+/*Acordeón (estructura)*/
+.accordion details {
+    border-radius: 6px;
+    margin-bottom: 10px;
+    padding: 12px;
+}
+
+.accordion summary {
+    font-size: 1.1em;
+    cursor: pointer;
+    outline: none;
+}
+
+.accordion ul {
+    list-style: disc;
+    margin: 10px 0 0 20px;
+    padding-left: 0;
+}
