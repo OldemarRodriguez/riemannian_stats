@@ -1,9 +1,37 @@
-<div align="center">
-  <img src="/docs/source/_static/images/logo.jpg" alt="Logo" width="500" height="250"/>
-</div>
+<p align="center">
+  <img src="https://github.com/OldemarRodriguez/riemannian_stats/raw/main/docs/source/_static/images/logo.jpg" alt="Logo" width="600"/>
+</p>
+
+<p align="center">
+  <a href="https://pypi.org/project/riemannian-stats/">
+    <img alt="PyPI" src="https://img.shields.io/pypi/v/riemannian-stats?color=brightgreen&label=PyPI&logo=pypi">
+  </a>
+  <a href="https://opensource.org/licenses/BSD-3-Clause">
+    <img alt="License" src="https://img.shields.io/badge/license-BSD%203--Clause-blue.svg?logo=open-source-initiative">
+  </a>
+  <a href="https://riemannianstats.web.app/installation.html">
+    <img alt="Install" src="https://img.shields.io/badge/install-guide-success?logo=python">
+  </a>
+  <a href="https://riemannianstats.web.app/examples.html">
+    <img alt="Examples" src="https://img.shields.io/badge/examples-available-informational?logo=jupyter">
+  </a>
+  <a href="https://riemannianstats.web.app/riemannian_stats.html">
+    <img alt="Docs" src="https://img.shields.io/badge/docs-full-orange?logo=readthedocs">
+  </a>
+  <a href="https://riemannianstats.web.app/paper.html">
+    <img alt="Scientific Paper" src="https://img.shields.io/badge/paper-published-lightgrey?logo=academia">
+  </a>
+  <a href="https://riemannianstats.web.app/contributing.html">
+    <img alt="Contributors" src="https://img.shields.io/badge/contributors-and%20source-9cf?logo=github">
+  </a>
+  <a href="https://riemannianstats.web.app">
+    <img alt="Website" src="https://img.shields.io/badge/website-online-blueviolet?logo=firefox-browser">
+  </a>
+</p>
 
 
-## 📊 **Riemannian STATS: Statistical Analysis on Riemannian Manifolds**
+
+## **Riemannian STATS: Statistical Analysis on Riemannian Manifolds**
 
 ---
 **RiemannianStats** is an open-source package that implements a novel principal component analysis methodology adapted for data on Riemannian manifolds, using UMAP as a core tool to construct the underlying geometric structure. This tool enables advanced statistical techniques to be applied to any type of dataset, honoring its local geometry, without requiring the data to originate from traditionally geometric domains like medical imaging or shape analysis.
@@ -27,25 +55,18 @@ You can explore the **Riemannian STATS** package, its features, and interactive 
 
 ---
 
-## 🛠️ Features and Usage
+## Features and Modules
 
-**Riemannian STATS** offers several key functionalities:
-
-- **Data Preprocessing:**  
-  Easily import and transform datasets using functions in `data_processing.py`.
-
-- **Riemannian Analysis:**  
-  Perform advanced statistical methods with `riemannian_analysis.py` for extracting principal components in Riemannian spaces.
-
-- **Visualization:**  
-  Generate insightful 2D and 3D plots, along with other visualizations using `visualization.py`.
-
-- **Additional Utilities:**  
-  Use helper functions available in `utilities.py` for various tasks.
+| Functionality            | Module                  | Documentation                                           |
+|--------------------------|-------------------------|---------------------------------------------------------|
+| Data preprocessing       | `data_processing.py`    | [🔗 data_processing](https://riemannianstats.web.app/data_processing.html) |
+| Riemannian analysis      | `riemannian_analysis.py`| [🔗 riemannian_analysis](https://riemannianstats.web.app/riemannian_analysis.html) |
+| Visualizations (2D/3D)   | `visualization.py`      | [🔗 visualization](https://riemannianstats.web.app/visualization.html) |
+| Utilities                | `utilities.py`          | [🔗 utilities](https://riemannianstats.web.app/utilities.html) |
 
 ---
 
-## 📦 Package structure
+## Package structure
 
 The project structure is organized as follows:
 
@@ -80,12 +101,45 @@ riemannian_stats/
 ├── pyproject.toml                       # Package installation script
 ├── README.md                            # General information and usage of the package
 └── LICENSE.txt                          # BSD-3-Clause License
-
 ```
 
 ---
 
-## 🚀 Installation
+---
+
+### 📚 Examples of Use
+
+The `examples/` directory contains three complete use cases applying Riemannian STATS to different datasets:
+
+| Dataset        | Description                                                                                                                                                   | Script                                 | Results                                                                          |
+| -------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------| -------------------------------------------------------------------------------- |
+| Iris           | Applies Riemannian PCA to 150 flowers from 3 species using 4 morphological variables (sepal/petal length and width). Visualizes species in component space.   | [🧾 example1.py](examples/example1.py) | [📊 View Output](https://riemannianstats.web.app/_static/examples/Example1.html) |
+| Data10D\_250   | Synthetic dataset with 250 points in 10 dimensions and labeled clusters. Computes UMAP similarities, rho matrix, R-PCA, and correlation analysis.             | [🧾 example2.py](examples/example2.py)          | [📊 View Output](https://riemannianstats.web.app/_static/examples/Example2.html) |
+| Olivetti Faces | 400 grayscale face images (64×64 pixels, 4096D) from 40 individuals. Projects them into Riemannian component space for identity separation and visualization. | [🧾 example3.py](examples/example3.py)          | [📊 View Output](https://riemannianstats.web.app/_static/examples/Example3.html) |
+
+
+📖 For full walkthroughs with inputs, outputs, and visualizations:
+[📊 Examples Overview](https://riemannianstats.web.app/examples.html)
+
+---
+
+### Importing the Package
+
+`riemannian_stats` supports both **PascalCase** and **lowercase alias** imports for flexibility:
+
+```python
+# Standard
+from riemannian_stats import RiemannianAnalysis, DataProcessing, Visualization, Utilities
+
+# Aliased (optional)
+from riemannian_stats import riemannian_analysis, data_processing, visualization, utilities
+```
+
+💡 *Both styles provide access to the same functionality—choose the one that best fits your coding preferences.*
+
+---
+
+## Installation
 
 Ensure you have [Python ≥ 3.8](https://www.python.org/downloads/) installed, then run:
 
@@ -111,144 +165,13 @@ This project follows PEP 621 and uses pyproject.toml as the primary configuratio
 * **scikit-learn** (>=1.3.2, <1.7)
 * **umap-learn** (>=0.5.7, <0.6)
 
-These dependencies are defined in the [pyproject.toml](./pyproject.toml) and in [requirements.txt](./requirements.txt) .
+These dependencies are defined in the [pyproject.toml](pyproject.toml) and in [requirements.txt](requirements.txt) .
 
 ---
 
-## 🔄 Importing Modules and Classes
+## License
 
-RiemannianStats supports multiple import styles to improve flexibility and usability:
-
-### ✅ Standard Imports
-
-Use PascalCase class names for clarity and convention:
-
-```python
-from riemannian_stats import RiemannianAnalysis, DataProcessing, Visualization, Utilities
-````
-
-### ✨ Lowercase Aliases
-
-Alternatively, you can use lowercase aliases for convenience:
-
-```python
-from riemannian_stats import riemannian_analysis, DataProcessing, visualization, utilities
-```
-
-Both styles provide access to the same classes—choose the one that fits your workflow best.
-
-
----
-
-
-## 📚 Examples of use
-The `examples/` directory contains two comprehensive examples demonstrating how to leverage **Riemannian STATS** for Riemannian data analysis and visualization.
-
---- 
-### Example 1: Iris Dataset
-
-This example illustrates the capabilities of the `riemannian_stats` package using the classic, lower-dimensional **Iris dataset** (`iris.csv`). The analysis follows this workflow:
-
-#### Data Loading and Preprocessing
-
-The dataset is imported using `pandas.read_csv()` with a **semicolon (`;`)** as the separator and a **dot (`.`)** as the decimal mark. Alternatively, you could use `DataProcessing.load_data()` if preferred. The script checks for a `species` column to extract clustering information, separating it from the analysis data but keeping it for visualizations.
-
-#### Riemannian Analysis
-
-An instance of `RiemannianAnalysis` is initialized with a neighbor count equal to the data length divided by 3. The analysis process includes:
-
-* Calculation of **UMAP graph similarities**.
-* Derivation of the **rho matrix**.
-* Computation of **Riemannian vector differences**.
-* Generation of the **UMAP distance matrix**.
-* Computation of **Riemannian covariance and correlation matrices**.
-* Extraction of **principal components**.
-* Determination of **explained inertia** (as a percentage) using the first two components.
-* Evaluation of **correlations** between the original variables and principal components.
-
-#### Visualization
-
-When clustering data is available, the example generates:
-
-* A **2D scatter plot** with clusters (using dimensions like `sepal.length` and `sepal.width`).
-* A **Principal plane plot** with clusters.
-* A **3D scatter plot** with clusters (adding a third dimension with `petal.length`).
-* A **Correlation circle plot** (produced in all cases, with or without clusters).
-
-*For full details, see [example1.py](./examples/example1.py)*
-
----
-
-### Example 2: Data10D_250 Dataset
-
-This example demonstrates the analysis of a high-dimensional dataset (`Data10D_250.csv`). The workflow includes:
-
-#### Data Loading and Preprocessing:
-  The dataset is loaded using `pandas.read_csv()` with a comma as the separator and a dot for decimals. Optionally, the user could use `DataProcessing.load_data()` if working within a custom preprocessing pipeline. If a `cluster` column exists, clustering information is separated from the main analysis data, while retaining a copy for visualization.
-
-#### Riemannian Analysis:
-  An instance of `RiemannianAnalysis` is created with a neighbor count calculated as the dataset length divided by 5. The analysis includes:
-
-* Calculation of **UMAP graph similarities**.
-* Derivation of the **rho matrix**.
-* Computation of **Riemannian vector differences**.
-* Generation of the **UMAP distance matrix**.
-* Computation of **Riemannian covariance and correlation matrices**.
-* Extraction of **principal components**.
-* Determination of **explained inertia** (as a percentage) using the first two components.
-* Evaluation of **correlations** between the original variables and principal components.
-
-#### Visualization:
-  Depending on the presence of clustering data, the example produces:
-
-  * A **2D scatter plot** with clusters.
-  * A **Principal plane plot** showcasing principal components.
-  * A **3D scatter plot** with clusters.
-  * A **Correlation circle plot** to display correlations between original variables and principal components.
-
-*For full details, see [example2.py](./examples/example2.py)*
-
----
-
----
-### Example 3: Olivetti Faces Dataset
-
-This example showcases the use of the `riemannian_stats` package for analyzing a high-dimensional image dataset: the **Olivetti Faces** dataset from `sklearn`.
-
-#### Data Loading and Preprocessing
-
-The dataset is loaded using `fetch_olivetti_faces` and then converted into a `pandas.DataFrame`. Each sample is a flattened grayscale face image, and labels (from 0 to 39) indicate individual identities. These labels are treated as cluster identifiers for visualization.
-
-The number of neighbors for UMAP is calculated based on the number of samples per individual (typically 10), resulting in a value of `n_neighbors = len(data) / 40`.
-
-#### Riemannian Analysis
-
-An instance of `RiemannianAnalysis` is used to compute the following:
-
-* **UMAP similarity matrix**
-* **Rho matrix** (`1 - similarity`)
-* **Riemannian vector differences**
-* **UMAP distance matrix**
-* **Riemannian correlation matrix**
-
-From there, the script proceeds to:
-
-* Extract **principal components**
-* Calculate the **explained inertia** for the first two components
-* Evaluate **correlations** between original features and principal components
-
-#### Visualization
-
-Visualizations are created using the provided cluster labels (individual identities):
-
-* A **2D scatter plot** showing the distribution of individuals in the first two principal components
-* A **Principal plane plot** with clusters
-* A **3D scatter plot** (adds a third component when available)
-* A **Correlation circle plot** showing how original variables relate to the principal components
-
-This example demonstrates how `riemannian_stats` can be extended beyond classical tabular datasets to handle complex **image data**, offering both analytical depth and intuitive visual interpretation.
-
-*For full details, see [example3.py](./examples/example3.py)*
+Distributed under the BSD-3-Clause License. See the [LICENSE.txt](LICENSE.txt) for more details.
 
 ---
 
@@ -268,49 +191,43 @@ This ensures that all functions and modules perform as expected throughout devel
 
 ---
 
-## 👥 Authors & Contributors
+## Authors & Contributors
 
 - **Oldemar Rodríguez Rojas** – Developed the mathematical functions and conducted the research.
 - **Jennifer Lobo Vásquez** – Led the overall development and integration of the package.
 
----
-
-## 📄 License
-
-Distributed under the BSD-3-Clause License. See the [LICENSE](./LICENSE.txt) for more details.
-
----
-
-## ❓ Support & Contributions
+## Support & Contributions
 
 If you encounter any issues or have suggestions for improvements, please open an issue on the repository or submit a pull request. Your feedback is invaluable to enhancing the package.
 
-To learn how to contribute effectively, please refer to the [Contributing.md](./Contributing.md) file, where you’ll find guidelines and best practices to get involved.
+To learn how to contribute effectively, please refer to the [Contributing.md](Contributing.md) file, where you’ll find guidelines and best practices to get involved.
 
 ---
-## 📚 References
+
+## References
 
 - **[Matplotlib Documentation](https://matplotlib.org/stable/contents.html)**  
   Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.  
-  📦 PyPI: [matplotlib · PyPI](https://pypi.org/project/matplotlib/)
+  PyPI: [matplotlib · PyPI](https://pypi.org/project/matplotlib/)
 
 - **[Pandas Documentation](https://pandas.pydata.org/docs/)**  
   Pandas provides high-performance, easy-to-use data structures and data analysis tools for Python.  
-  📦 PyPI: [pandas · PyPI](https://pypi.org/project/pandas/)
+  PyPI: [pandas · PyPI](https://pypi.org/project/pandas/)
 
 - **[NumPy Documentation](https://numpy.org/doc/)**  
   NumPy is the fundamental package for numerical computation in Python.  
-  📦 PyPI: [numpy · PyPI](https://pypi.org/project/numpy/)
+  PyPI: [numpy · PyPI](https://pypi.org/project/numpy/)
 
 - **[Scikit-learn Documentation](https://scikit-learn.org/stable/documentation.html)**  
   Scikit-learn is a machine learning library for Python, providing tools for classification, regression, clustering, and dimensionality reduction.  
-  📦 PyPI: [scikit-learn · PyPI](https://pypi.org/project/scikit-learn/)
+  PyPI: [scikit-learn · PyPI](https://pypi.org/project/scikit-learn/)
 
 - **[UMAP-learn Documentation](https://umap-learn.readthedocs.io/)**  
   UMAP (Uniform Manifold Approximation and Projection) is a dimension reduction technique for visualization and general non-linear dimension reduction.  
-  📦 PyPI: [umap-learn · PyPI](https://pypi.org/project/umap-learn/)
+  PyPI: [umap-learn · PyPI](https://pypi.org/project/umap-learn/)
 
 - **[Setuptools Documentation](https://setuptools.pypa.io/en/latest/)**  
   Setuptools is a package development and distribution tool used to package Python projects and manage dependencies.  
-  📦 PyPI: [setuptools · PyPI](https://pypi.org/project/setuptools/)
+  PyPI: [setuptools · PyPI](https://pypi.org/project/setuptools/)
 
+  
