@@ -106,47 +106,41 @@ if clusters is not None:
         clusters=clusters,
     )
     try:
-        # 1. 2D scatter plot with clusters (requires the 'species' column in the DataFrame).
         viz.plot_2d_scatter_with_clusters(
             x_col="sepal.length",
             y_col="sepal.width",
             cluster_col="species",
-            title="iris.csv",
+            title="Iris",
         )
     except Exception as e:
         print("2D scatter plot with clusters failed:", e)
 
     try:
-        # 2. Principal plane plot with clusters.
-        viz.plot_principal_plane_with_clusters(title="iris.csv")
+        viz.plot_principal_plane_with_clusters(title="Iris")
     except Exception as e:
         print("Principal plane with clusters plot failed:", e)
 
     try:
-        # 3. 3D scatter plot with clusters (requires the 'species' column and appropriate 3D data columns).
         viz.plot_3d_scatter_with_clusters(
             x_col="sepal.length",
             y_col="sepal.width",
             z_col="petal.length",
             cluster_col="species",
-            title="iris.csv",
+            title="Iris",
             figsize=(12, 8),
         )
     except Exception as e:
         print("3D scatter plot with clusters failed:", e)
 else:
-    # Create a Visualization instance without clusters.
     viz = visualization(
         data=data, components=riemann_components, explained_inertia=inertia
     )
     try:
-        # Plot the principal plane (does not require cluster information).
-        viz.plot_principal_plane(title="iris.csv")
+        viz.plot_principal_plane(title="Iris")
     except Exception as e:
         print("Principal plane plot failed:", e)
 
-# 4. Plot the correlation circle (should work regardless of clusters).
 try:
-    viz.plot_correlation_circle(correlations=correlations, title="iris.csv")
+    viz.plot_correlation_circle(correlations=correlations, title="Iris")
 except Exception as e:
     print("Correlation circle plot failed:", e)

@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from typing import Optional, Tuple
 import numpy as np
 import pandas as pd
+from .utilities import Utilities
 
 
 class Visualization:
@@ -87,46 +88,6 @@ class Visualization:
         """Returns the cluster labels for each data point."""
         return self._clusters
 
-    def _get_adaptive_colormap(self, n_clusters: int):
-        if n_clusters <= 10:
-            return plt.cm.get_cmap("Set1", n_clusters)
-        elif n_clusters <= 20:
-            return plt.cm.get_cmap("tab10", n_clusters)
-        elif n_clusters <= 40:
-            return plt.cm.get_cmap("tab20", n_clusters)
-        else:
-            return plt.cm.get_cmap("nipy_spectral", n_clusters)
-
-    def plot_principal_plane(
-        self, title: str = "", figsize: Tuple[int, int] = (10, 8)
-    ) -> None:
-        """
-        Generates a plot of the principal plane using the principal components.
-
-        Parameters:
-            title (str, optional): Custom title to add above the default title.
-            figsize (tuple, optional): Figure size. Defaults to (10, 8).
-        """
-        default_title = "Principal Plane"
-        if title:
-            full_title = f"{title}\n{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
-        else:
-            full_title = (
-                f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
-            )
-        x, y = self.components[:, 0], self.components[:, 1]
-        plt.figure(figsize=figsize)
-        plt.scatter(x, y, color="gray")
-        for i, label in enumerate(self.data.index):
-            plt.text(x[i], y[i], label, fontsize=9, ha="right")
-        plt.title(full_title)
-        plt.axhline(y=0, color="dimgrey", linestyle="--")
-        plt.axvline(x=0, color="dimgrey", linestyle="--")
-        plt.xlabel("Component 1")
-        plt.ylabel("Component 2")
-        plt.tight_layout()
-        plt.show()
-
     def plot_correlation_circle(
         self,
         correlations: pd.DataFrame,
@@ -166,7 +127,7 @@ class Visualization:
                 correlations.iloc[i, 0] * scale,
                 correlations.iloc[i, 1] * scale,
                 color="steelblue",
-                alpha=0.5,
+                alpha=0.7,
                 head_width=0.05,
                 head_length=0.05,
             )
@@ -181,8 +142,46 @@ class Visualization:
         plt.tight_layout()
         plt.show()
 
+    def plot_principal_plane(
+        self, title: str = "", figsize: Tuple[int, int] = (10, 8), s: int = 20, alpha: float = 1
+    ) -> None:
+        """
+        Generates a plot of the principal plane using the principal components.
+
+        Parameters:
+            title (str, optional): Custom title to add above the default title.
+            figsize (tuple, optional): Figure size. Defaults to (10, 8).
+            s (int, optional): Size of the points. Defaults to 50.
+            alpha (float, optional): Transparency of the points. Defaults to 1.
+        """
+        default_title = "Principal Plane"
+        if title:
+            full_title = f"{title}\n{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+        else:
+            full_title = (
+                f"{default_title} (Explained Inertia: {self.explained_inertia:.2f}%)"
+            )
+
+        x, y = self.components[:, 0], self.components[:, 1]
+
+        plt.figure(figsize=figsize)
+        plt.scatter(x, y, color="gray", s=s, alpha=alpha)
+
+        for i, label in enumerate(self.data.index):
+            plt.text(x[i], y[i], label, fontsize=9, ha="right")
+
+        plt.title(full_title)
+        plt.axhline(y=0, color="dimgrey", linestyle="--")
+        plt.axvline(x=0, color="dimgrey", linestyle="--")
+
+        plt.xlabel("Component 1")
+        plt.ylabel("Component 2")
+        plt.tight_layout()
+
+        plt.show()
+
     def plot_principal_plane_with_clusters(
-        self, title: str = "", figsize: Tuple[int, int] = (10, 8)
+        self, title: str = "", figsize: Tuple[int, int] = (10, 8), s: int = 50, alpha: float = 1
     ) -> None:
         """
         Generates a plot of the principal plane with points colored according to clusters,
@@ -191,6 +190,8 @@ class Visualization:
         Parameters:
             title (str, optional): Custom title to add above the default title.
             figsize (tuple, optional): Figure size. Defaults to (10, 8).
+            s (int, optional): Size of the points. Defaults to 50.
+            alpha (float, optional): Transparency of the points. Defaults to 1.
         """
         if self.clusters is None:
             raise ValueError("Cluster information is required for this plot.")
@@ -207,7 +208,7 @@ class Visualization:
         unique_clusters = np.unique(self.clusters)
         n_clusters = len(unique_clusters)
 
-        color_map = self._get_adaptive_colormap(n_clusters)
+        color_map = Utilities.get_adaptive_colormap(n_clusters)
 
         for i, cluster in enumerate(unique_clusters):
             cluster_points = self.clusters == cluster
@@ -215,7 +216,9 @@ class Visualization:
                 x[cluster_points],
                 y[cluster_points],
                 label=f"Cluster {cluster}",
-                alpha=0.7,
+                s=s,
+                alpha=alpha,
+                edgecolor="k",
                 color=color_map(i),
             )
 
@@ -250,6 +253,8 @@ class Visualization:
         cluster_col: str,
         title: str = "",
         figsize: Tuple[int, int] = (10, 8),
+        s: int = 50,
+        alpha: float = 1
     ) -> None:
         """
         Generates a 2D scatter plot colored by cluster using a wide color palette.
@@ -260,6 +265,8 @@ class Visualization:
             cluster_col (str): Name of the column containing cluster labels.
             title (str, optional): Custom title to add above the default title.
             figsize (tuple, optional): Figure size. Defaults to (10, 8).
+            s (int, optional): Size of the points. Defaults to 50.
+            alpha (float, optional): Transparency of the points. Defaults to 1.
         """
         default_title = "2D Cluster Projection – Visualization of Groupings"
         if title:
@@ -273,7 +280,7 @@ class Visualization:
         unique_clusters = np.unique(self.data[cluster_col])
         n_clusters = len(unique_clusters)
 
-        color_map = self._get_adaptive_colormap(n_clusters)
+        color_map = Utilities.get_adaptive_colormap(n_clusters)
 
         for i, cluster in enumerate(unique_clusters):
             subset = self.data[self.data[cluster_col] == cluster]
@@ -281,9 +288,10 @@ class Visualization:
                 subset[x_col],
                 subset[y_col],
                 label=f"Cluster {cluster}",
-                s=20,
+                s=s,
+                alpha=alpha,
                 edgecolor="k",
-                color=color_map(i),  # 🟢 Color único por cluster
+                color=color_map(i),
             )
 
         plt.title(full_title)
@@ -315,7 +323,7 @@ class Visualization:
         title: str = "",
         figsize: Tuple[int, int] = (12, 8),
         s: int = 50,
-        alpha: float = 0.7,
+        alpha: float = 1
     ) -> None:
         """
         Creates a 3D scatter plot colored by cluster using a wide colormap for better differentiation.
@@ -328,7 +336,7 @@ class Visualization:
             title (str, optional): Custom title to add above the default title.
             figsize (tuple, optional): Figure size. Defaults to (12, 8).
             s (int, optional): Size of the points. Defaults to 50.
-            alpha (float, optional): Transparency of the points. Defaults to 0.7.
+            alpha (float, optional): Transparency of the points. Defaults to 1.
         """
         default_title = "3D Scatter Plot – Cluster Distribution"
         if title:
@@ -341,7 +349,7 @@ class Visualization:
         cluster_codes, unique_clusters = pd.factorize(self.data[cluster_col])
         n_clusters = len(unique_clusters)
 
-        color_map = self._get_adaptive_colormap(n_clusters)
+        color_map = Utilities.get_adaptive_colormap(n_clusters)
 
         fig = plt.figure(figsize=figsize)
         ax = fig.add_subplot(111, projection="3d")
@@ -354,6 +362,7 @@ class Visualization:
                 self.data.loc[cluster_points, z_col],
                 color=color_map(i),
                 label=f"Cluster {cluster_name}",
+                edgecolor="k",
                 s=s,
                 alpha=alpha,
             )

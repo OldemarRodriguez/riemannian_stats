@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "riemannian_stats"
-version = "0.1.0"
+version = "0.1.1"
 description = "Riemannian STATS is a package for applying Principal Component Analysis on Riemannian manifolds using UMAP-derived local geometry, enabling powerful dimensionality reduction and visualization for any type of data."
 authors = [
     { name = "Oldemar Rodríguez Rojas", email = "oldemar.rodriguez@ucr.ac.cr" },

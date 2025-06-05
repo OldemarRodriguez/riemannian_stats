@@ -104,13 +104,13 @@ if clusters is not None:
     )
     try:
         viz.plot_2d_scatter_with_clusters(
-            x_col="x", y_col="y", cluster_col="cluster", title="Data10D_250.csv"
+            x_col="x", y_col="y", cluster_col="cluster", title="Data10D_250"
         )
     except Exception as e:
         print("2D scatter plot with clusters failed:", e)
 
     try:
-        viz.plot_principal_plane_with_clusters(title="Data10D_250.csv")
+        viz.plot_principal_plane_with_clusters(title="Data10D_250")
     except Exception as e:
         print("Principal plane with clusters plot failed:", e)
 
@@ -130,12 +130,12 @@ else:
         data=data, components=riemann_components, explained_inertia=inertia
     )
     try:
-        viz.plot_principal_plane(title="Data10D_250.csv")
+        viz.plot_principal_plane(title="Data10D_250")
     except Exception as e:
         print("Principal plane plot failed:", e)
 
 # Plot the correlation circle (works regardless of clusters).
 try:
-    viz.plot_correlation_circle(correlations=correlations, title="Data10D_250.csv")
+    viz.plot_correlation_circle(correlations=correlations, title="Data10D_250")
 except Exception as e:
     print("Correlation circle plot failed:", e)
