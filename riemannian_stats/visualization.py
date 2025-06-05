@@ -143,7 +143,11 @@ class Visualization:
         plt.show()
 
     def plot_principal_plane(
-        self, title: str = "", figsize: Tuple[int, int] = (10, 8), s: int = 20, alpha: float = 1
+        self,
+        title: str = "",
+        figsize: Tuple[int, int] = (10, 8),
+        s: int = 20,
+        alpha: float = 1,
     ) -> None:
         """
         Generates a plot of the principal plane using the principal components.
@@ -181,7 +185,11 @@ class Visualization:
         plt.show()
 
     def plot_principal_plane_with_clusters(
-        self, title: str = "", figsize: Tuple[int, int] = (10, 8), s: int = 50, alpha: float = 1
+        self,
+        title: str = "",
+        figsize: Tuple[int, int] = (10, 8),
+        s: int = 50,
+        alpha: float = 1,
     ) -> None:
         """
         Generates a plot of the principal plane with points colored according to clusters,
@@ -254,7 +262,7 @@ class Visualization:
         title: str = "",
         figsize: Tuple[int, int] = (10, 8),
         s: int = 50,
-        alpha: float = 1
+        alpha: float = 1,
     ) -> None:
         """
         Generates a 2D scatter plot colored by cluster using a wide color palette.
@@ -323,7 +331,7 @@ class Visualization:
         title: str = "",
         figsize: Tuple[int, int] = (12, 8),
         s: int = 50,
-        alpha: float = 1
+        alpha: float = 1,
     ) -> None:
         """
         Creates a 3D scatter plot colored by cluster using a wide colormap for better differentiation.
