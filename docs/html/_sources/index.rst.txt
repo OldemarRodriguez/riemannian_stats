@@ -24,7 +24,7 @@ The core idea is simple yet powerful: **treat your dataset not as flat, but as c
 
 **Ideal for** researchers, data scientists, and developers looking to enhance their analysis of complex datasets with geometry-aware tools.
 
-**You can install Riemannian STATS directly from PyPI:** `Riemannian STATS on PyPI <https://pypi.org/project/riemannian-stats/0.1.0/>`_
+**You can install Riemannian STATS directly from PyPI:** `Riemannian STATS on PyPI <https://pypi.org/project/riemannian-stats/>`_
 
 **User Guide**
 --------------

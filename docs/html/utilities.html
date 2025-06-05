@@ -304,6 +304,38 @@
 such as PCA-based calculations, designed to support data analysis pipelines
 without requiring class instantiation.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="riemannian_stats.utilities.Utilities.get_adaptive_colormap">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_adaptive_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#riemannian_stats.utilities.Utilities.get_adaptive_colormap" title="Link to this definition">¶</a></dt>
+<dd><p>Returns an adaptive colormap based on the number of clusters.
+This version uses the custom palette defined in the get_custom_palette method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n_clusters</strong> (<em>int</em>) – The number of clusters that need unique colors.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A colormap that contains a sufficient number of distinct colors for the given clusters.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ListedColormap</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="riemannian_stats.utilities.Utilities.get_custom_palette">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_custom_palette</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#riemannian_stats.utilities.Utilities.get_custom_palette" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a custom color palette without black and white.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A colormap based on a custom list of colors.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>ListedColormap</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="riemannian_stats.utilities.Utilities.pca_inertia_by_components">
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pca_inertia_by_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correlation_matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#riemannian_stats.utilities.Utilities.pca_inertia_by_components" title="Link to this definition">¶</a></dt>
 <dd><p>Calculates the inertia (explained variance ratio) of two specified principal components from a correlation matrix.</p>
@@ -394,6 +426,8 @@ without requiring class instantiation.</p>
 <li><a class="reference internal" href="#usage-example">Usage Example</a></li>
 <li><a class="reference internal" href="#api-documentation">API Documentation</a><ul>
 <li><a class="reference internal" href="#riemannian_stats.utilities.Utilities"><code class="docutils literal notranslate"><span class="pre">Utilities</span></code></a><ul>
+<li><a class="reference internal" href="#riemannian_stats.utilities.Utilities.get_adaptive_colormap"><code class="docutils literal notranslate"><span class="pre">Utilities.get_adaptive_colormap()</span></code></a></li>
+<li><a class="reference internal" href="#riemannian_stats.utilities.Utilities.get_custom_palette"><code class="docutils literal notranslate"><span class="pre">Utilities.get_custom_palette()</span></code></a></li>
 <li><a class="reference internal" href="#riemannian_stats.utilities.Utilities.pca_inertia_by_components"><code class="docutils literal notranslate"><span class="pre">Utilities.pca_inertia_by_components()</span></code></a></li>
 </ul>
 </li>

@@ -6,17 +6,14 @@
   <a href="https://pypi.org/project/riemannian-stats/">
     <img alt="PyPI" src="https://img.shields.io/pypi/v/riemannian-stats?color=brightgreen&label=PyPI&logo=pypi">
   </a>
-  <a href="https://opensource.org/licenses/BSD-3-Clause">
-    <img alt="License" src="https://img.shields.io/badge/license-BSD%203--Clause-blue.svg?logo=open-source-initiative">
-  </a>
   <a href="https://riemannianstats.web.app/installation.html">
     <img alt="Install" src="https://img.shields.io/badge/install-guide-success?logo=python">
   </a>
+  <a href="https://opensource.org/licenses/BSD-3-Clause">
+    <img alt="License" src="https://img.shields.io/badge/license-BSD%203--Clause-blue.svg?logo=open-source-initiative">
+  </a>
   <a href="https://riemannianstats.web.app/examples.html">
     <img alt="Examples" src="https://img.shields.io/badge/examples-available-informational?logo=jupyter">
-  </a>
-  <a href="https://riemannianstats.web.app/riemannian_stats.html">
-    <img alt="Docs" src="https://img.shields.io/badge/docs-full-orange?logo=readthedocs">
   </a>
   <a href="https://riemannianstats.web.app/paper.html">
     <img alt="Scientific Paper" src="https://img.shields.io/badge/paper-published-lightgrey?logo=academia">
@@ -50,8 +47,11 @@ This package is ideal for researchers, data scientists, and developers seeking t
 
 ### 🌐 Package Website
 
-You can explore the **Riemannian STATS** package, its features, and interactive examples at:
+You can explore the **Riemannian STATS** package documentation , its features, and interactive examples at:
 🔗 [https://riemannianstats.web.app](https://riemannianstats.web.app)
+
+You can install Riemannian STATS directly from PyPI: [Riemannian STATS on PyPI](https://pypi.org/project/riemannian-stats/)
+
 
 ---
 
